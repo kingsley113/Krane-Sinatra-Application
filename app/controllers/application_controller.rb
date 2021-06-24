@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
     set :public_folder, 'public'
     set :views, 'app/views'
     enable :sessions
-    set :session_secret, "golfclubsaregreat"
+    set :session_secret, "constructioniscool"
   end
 
   get '/' do
@@ -29,5 +29,5 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
   end
-  
+
 end

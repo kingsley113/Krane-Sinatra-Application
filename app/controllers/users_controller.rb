@@ -23,8 +23,8 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    binding.pry
-    user = User.create(params[:new_user].except("jobsite_ids"))
+    # binding.pry
+    @user = User.create(params[:new_user].except("jobsite_ids"))
 
     params[:new_user][:jobsite_ids].each do |jobsite|
       @user.jobsites << Jobsite.find(jobsite)

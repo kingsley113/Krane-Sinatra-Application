@@ -23,7 +23,12 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    @user = User.create(params)
+    binding.pry
+    user = User.create(params[:new_user].except("jobsite_ids"))
+
+    params[:new_user][:jobsite_ids].each do |jobsite|
+      @user.jobsites << Jobsite.find(jobsite)
+    end
 
     redirect "/users/#{@user.slug}"
   end

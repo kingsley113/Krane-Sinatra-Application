@@ -36,15 +36,14 @@
 <br>
 <hr>
 
-TODO:<br>
-user (radio button) - should this be a radio or set to only the current user???? Pre filled in radio??<br>
+TODO: - should this be a radio or set to only the current user???? Pre filled in radio??<br>
+Select User: <br>
 <% @users.each do |user|%>
     <input type="radio" id="<%=user.id%>" name="current_user">
-    <label for="<%=user.id%>"><%=user.name%></label><br>
+    <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
 <%end%>
 <br>
-<br>
-<br>
+
 Select Jobsite:<br>
 
 <% @jobsites.each do |jobsite|%>

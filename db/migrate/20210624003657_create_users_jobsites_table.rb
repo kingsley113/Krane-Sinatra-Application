@@ -1,6 +1,6 @@
 class CreateUsersJobsitesTable < ActiveRecord::Migration[6.0]
   def change
-    create_table :user_sobsites do |t|
+    create_table :user_jobsites do |t|
       t.integer :user_id
       t.integer :jobsite_id
 

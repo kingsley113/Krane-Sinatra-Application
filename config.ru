@@ -3,9 +3,9 @@ require './config/environment'
 begin
 
   use Rack::MethodOverride
-  # use DailyReportsController
+  use DailyReportsController
   # use JobsitesController
-  # use UsersController
+  use UsersController
   run ApplicationController
   
 rescue ActiveRecord::PendingMigrationError => err

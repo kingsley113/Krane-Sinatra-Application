@@ -1,4 +1,4 @@
-class Jobsite < ActiveRecord::Base
+class User < ActiveRecord::Base
     has_many :daily_reports
 
     has_many :user_jobsites

@@ -1,15 +1,16 @@
 require './config/environment'
 
-class UsersController < Sinatra::Base
+class UsersController < ApplicationController
 
   get '/users' do
-    @users = User.all
+    # @users = User.all
 
     erb :'users/index'
-  end
+    end
 
-  get '/users/new' do
-    erb :'users/new'
+  get '/users/signup' do
+    # TODO: add validation to only show signup for new users
+    erb :'users/signup'
   end
 
   get '/users/:slug' do

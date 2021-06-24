@@ -1,6 +1,6 @@
 require './config/environment'
 
-class DailyReportsController < Sinatra::Base
+class DailyReportsController < ApplicationController
 
     get '/daily_reports' do
         @daily_reports = DailyReport.all

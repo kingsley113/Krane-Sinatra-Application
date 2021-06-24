@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_003657) do
+ActiveRecord::Schema.define(version: 2021_06_24_014105) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.string "work_completed"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_06_24_003657) do
     t.date "finish_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "slug"
   end
 
   create_table "user_jobsites", force: :cascade do |t|

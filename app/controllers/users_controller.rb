@@ -9,7 +9,10 @@ class UsersController < ApplicationController
     end
 
   get '/users/signup' do
+    @jobsites = Jobsite.all
+    
     # TODO: add validation to only show signup for new users
+
     erb :'users/signup'
   end
 

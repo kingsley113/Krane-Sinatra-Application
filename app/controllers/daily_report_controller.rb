@@ -17,7 +17,12 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/daily_reports' do
-        
+        daily_report = DailyReport.new
+        params[:daily_report].each do |attribute, value|
+            # binding.pry
+            daily_report[:"#{attribute}"] = value
+        end
+        daily_report.save
     end
 
     get '/daily_reports/:id/edit' do

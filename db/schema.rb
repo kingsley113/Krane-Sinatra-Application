@@ -10,20 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_065624) do
+ActiveRecord::Schema.define(version: 2021_06_24_194131) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.string "work_completed"
     t.string "weather"
     t.string "deliveries"
     t.string "inspections"
-    t.integer "workers_onsite"
-    t.time "shift_start"
-    t.time "shift_end"
+    t.integer "no_of_workers_onsite"
+    t.time "shift_start_time"
+    t.time "shift_end_time"
     t.integer "user_id"
     t.integer "jobsite_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "work_date"
   end
 
   create_table "jobsites", force: :cascade do |t|

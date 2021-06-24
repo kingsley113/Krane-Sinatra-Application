@@ -37,7 +37,11 @@
 <hr>
 
 TODO:<br>
-user (radio button)<br>
+user (radio button) - should this be a radio or set to only the current user???? Pre filled in radio??<br>
+<% @users.each do |user|%>
+    <input type="radio" id="<%=user.id%>" name="current_user">
+    <label for="<%=user.id%>"><%=user.name%></label><br>
+<%end%>
 <br>
 <br>
 <br>

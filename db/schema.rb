@@ -10,15 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_014105) do
+ActiveRecord::Schema.define(version: 2021_06_24_065624) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.string "work_completed"
     t.string "weather"
     t.string "deliveries"
     t.string "inspections"
-    t.string "correspondence"
-    t.string "delays"
     t.integer "workers_onsite"
     t.time "shift_start"
     t.time "shift_end"

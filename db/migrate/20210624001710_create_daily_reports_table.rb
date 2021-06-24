@@ -1,6 +1,6 @@
 class CreateDailyReportsTable < ActiveRecord::Migration[6.0]
   def change
-    create table :daily_reports do |t|
+    create_table :daily_reports do |t|
       t.string :work_completed
       t.string :weather
       t.string :deliveries
@@ -17,5 +17,6 @@ class CreateDailyReportsTable < ActiveRecord::Migration[6.0]
       t.integer :jobsite_id
 
       t.timestamps null: false
+    end
   end
 end

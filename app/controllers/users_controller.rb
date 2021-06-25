@@ -24,6 +24,7 @@ class UsersController < ApplicationController
 
   post '/users' do
     # binding.pry
+    # TODO: add verification all entries are good
     @user = User.create(params[:new_user].except("jobsite_ids"))
 
     params[:new_user][:jobsite_ids].each do |jobsite|
@@ -33,4 +34,10 @@ class UsersController < ApplicationController
     redirect "/users/#{@user.slug}"
   end
 
+
+  # TODO: get Edit
+
+  # TODO: patch Edit
+
+  # TODO: delete 
 end

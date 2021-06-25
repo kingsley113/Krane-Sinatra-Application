@@ -1,6 +1,8 @@
 require './config/environment'
 
 class DailyReportsController < ApplicationController
+    enable :sessions
+    use Rack::Flash
 
     get '/daily_reports' do
         @daily_reports = DailyReport.all

@@ -1,12 +1,14 @@
 require './config/environment'
 
 class UsersController < ApplicationController
+  enable :sessions
+  use Rack::Flash
 
   get '/users' do
-    # @users = User.all
-
+    redirect_if_not_logged_in
+    @users = User.all 
     erb :'users/index'
-    end
+  end
 
   get '/users/signup' do
     @projects = Project.all
@@ -37,6 +39,7 @@ class UsersController < ApplicationController
   
   get '/login' do
     # TODO: looged in validation
+    # binding.pry
     erb :'users/login'
   end
 

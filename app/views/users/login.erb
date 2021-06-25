@@ -1,3 +1,10 @@
+flash should be here:
+
+<%if session.include?(:message)%>
+    <%= session[:message]%>
+    <% session.delete(:message) %>
+<% end %>
+
 <form method="post" action="/login" name="login">
     <label for="username">Username:</label>
     <input type="text" id="username" name="username" >

@@ -15,5 +15,6 @@ ActiveRecord::Base.establish_connection(
 )
 
 require 'rack-flash'
+require 'sinatra/redirect_with_flash'
 
 require_all 'app'

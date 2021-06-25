@@ -9,6 +9,9 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "constructioniscool"
   end
 
+  use Rack::Flash
+  # helpers Sinatra::RedirectWithFlash
+
   get '/' do
       erb :index
   end
@@ -16,7 +19,8 @@ class ApplicationController < Sinatra::Base
   helpers do
     def redirect_if_not_logged_in
       if !logged_in?
-        redirect "/login?error=You have to be logged in to do that"
+        session[:message] = 'You have to be logged in to do that'
+        redirect "/login"
       end
     end
 

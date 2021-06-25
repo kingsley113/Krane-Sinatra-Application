@@ -21,7 +21,7 @@ class ProjectsController < ApplicationController
 	end
 
 	post '/projects' do
-		binding.pry
+		# binding.pry
 		@project = Project.create(params[:new_projects].except("user_ids"))
 		# TODO: add validation
 		params[:new_projects][:user_ids].each do |user|

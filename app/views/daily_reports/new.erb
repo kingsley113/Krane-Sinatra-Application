@@ -39,7 +39,7 @@
 TODO: - should this be a radio or set to only the current user???? Pre filled in radio??<br>
 Select User: <br>
 <% @users.each do |user|%>
-    <input type="radio" id="<%=user.id%>" name="current_user">
+    <input type="radio" id="<%=user.id%>" name="current_user" value="<%=user.id%>>
     <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
 <%end%>
 <br>
@@ -47,7 +47,7 @@ Select User: <br>
 Select Project:<br>
 
 <% @projects.each do |project|%>
-    <input type="radio" id="<%=project.id%>" name="current_projects">
+    <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>>
     <label for="<%=project.id%>"><%=project.name%></label><br>
 <%end%>
 <br>

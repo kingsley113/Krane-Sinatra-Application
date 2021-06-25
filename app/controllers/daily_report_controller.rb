@@ -23,6 +23,7 @@ class DailyReportsController < ApplicationController
 
     post '/daily_reports' do
         # TODO: add validation
+        binding.pry
         daily_report = DailyReport.new
         params[:daily_report].each do |attribute, value|
             daily_report[:"#{attribute}"] = value
@@ -40,6 +41,7 @@ class DailyReportsController < ApplicationController
  
     post '/daily_reports/:id' do
         # TODO: add validation
+        
         @daily_report = DailyReport.find(params[:id])
 
         params[:daily_report].each do |attribute, value|

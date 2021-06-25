@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    binding.pry
+    # binding.pry
     # TODO: add verification all entries are good
     @user = User.create(params[:new_user].except("project_ids"))
 

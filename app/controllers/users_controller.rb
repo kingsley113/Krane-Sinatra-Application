@@ -34,6 +34,9 @@ class UsersController < ApplicationController
     redirect "/users/#{@user.slug}"
   end
 
+  # TODO: get login
+  
+  # TODO: post login
 
   # TODO: get Edit
 

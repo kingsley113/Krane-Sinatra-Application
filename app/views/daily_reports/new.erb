@@ -48,7 +48,7 @@ Select Project:<br>
 
 <% @projects.each do |project|%>
     <input type="radio" id="<%=project.id%>" name="current_projects">
-    <label for="<%=project.id%>"><%=projects.name%></label><br>
+    <label for="<%=project.id%>"><%=project.name%></label><br>
 <%end%>
 <br>
 TODO: make these side by side and pretty with CSS

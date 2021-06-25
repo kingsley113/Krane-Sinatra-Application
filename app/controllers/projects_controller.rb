@@ -1,6 +1,6 @@
 require './config/environment'
 
-class ProjectController < ApplicationController
+class ProjectsController < ApplicationController
 
 	get '/projects' do
 		@projects = Project.all

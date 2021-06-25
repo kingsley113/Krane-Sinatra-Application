@@ -28,6 +28,29 @@ class ProjectsController < ApplicationController
 		redirect "/projects/#{@project.slug}"
 	end
 
+	get '/projects/:slug/edit' do
+		@project = Project.find_by(slug: params[:slug])
+		@users = User.all
 
+		erb :'projects/show'
+	end
+  # TODO: patch Edit
+	patch '/projects/:slug' do
+		@project = Project.find_by(slug: params[:slug])
+
+		params[:project].except("user_ids").each do |attribute, value|
+			@project[:"#{attribute}"] = value
+		end
+
+		@project[:user_ids] = [] 
+		params[:user_ids].each do |user|
+			@project[:user_ids] << User.find(user.id)
+		end
+
+		@project.save
+
+		redirect "/projects/#{@project.slug}"
+	end
+  # TODO: delete 
 
 end

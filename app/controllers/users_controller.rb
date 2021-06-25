@@ -34,12 +34,30 @@ class UsersController < ApplicationController
     redirect "/users/#{@user.slug}"
   end
 
-  # TODO: get login
   
-  # TODO: post login
+  get '/login' do
+    # TODO: looged in validation
+    erb :'users/login'
+  end
+
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+
+    if @user && @user.authenticate(params[:password]) 
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.slug}"
+    end
+    erb :'/users/failure'
+
+  end
 
   # TODO: get Edit
+  get '/users/:slug/edit' do
+    @user = Users.find_by(slug: params[:slug])
+    @projects = Project.all
 
+    erb :'users/edit'
+  end
   # TODO: patch Edit
 
   # TODO: delete 

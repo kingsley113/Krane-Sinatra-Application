@@ -1,0 +1,55 @@
+<h2>Edit <%=@user.first_name%> <%=@user.last_name%>:</h2>
+<br>
+
+<form method="post" action="/users/<%=@user.slug%>" name="edit_user">
+    <label for="first_name">First Name:</label>
+    <input type="text" id="first_name" name="edited_user[first_name]" value="<%=@user.first_name%>">
+
+    <label for="last_name">Last Name:</label>
+    <input type="text" id="last_name" name="edited_user[last_name]" value="<%=@user.last_name%>">
+
+    <br>
+
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="edited_user[username]" value="<%=@user.username%>">
+
+    
+
+    <br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="edited_user[email]" value="<%=@user.email%>">
+
+    <label for="position">Positon:</label>
+    <input type="text" id="position" name="edited_user[position]" value="<%=@user.position%>">
+
+    <br>
+
+    <hr>
+    <br>
+    Current Projects:
+    <br>
+    <% @projects.each do |project|%>
+        <input type="checkbox" id="<%=project.id%>" name="edited_user[project_ids][]" value="<%=project.id%>" <%='checked' if @user.projects.include?(project)%> >
+        <label for="<%=project.id%>"><%=project.name%></label><br>
+    <%end%>
+    <br>
+    TODO: should the new project section not be here?
+    New Project: <br>
+    <label for="project_name">Project Name:</label>
+    <input type="text" id="project_name" name="project[name]" >
+    <label for="project_address">Project Address:</label>
+    <input type="text" id="project_address" name="project[address]" >
+    <br>
+
+    <hr>
+	<br>
+	
+	<label for="old_password">Old Password:</label>
+    <input type="password" id="old_password" name="edited_user[old_password]" >
+
+	<label for="new_password">New Password:</label>
+    <input type="password" id="new_password" name="edited_user[password]" >
+	<br>
+    <input type="submit" name="submit" id="submit" value="Edit User">
+</form>

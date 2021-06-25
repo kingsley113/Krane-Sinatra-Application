@@ -53,7 +53,7 @@ class UsersController < ApplicationController
 
   # TODO: get Edit
   get '/users/:slug/edit' do
-    @user = Users.find_by(slug: params[:slug])
+    @user = User.find_by(slug: params[:slug])
     @projects = Project.all
 
     erb :'users/edit'

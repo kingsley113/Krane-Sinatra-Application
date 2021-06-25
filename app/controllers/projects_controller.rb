@@ -4,23 +4,25 @@ class ProjectsController < ApplicationController
 
 	get '/projects' do
 		@projects = Project.all
-
+		# TODO: add login validation
 		erb :'projects/index'
 	end
 
 	get '/projects/new' do
 		@users = User.all
+		# TODO: add login validation
 		erb :'projects/new'
 	end
 
 	get '/projects/:slug' do
 		@project = Project.find_by(slug: params[:slug])
+		# TODO: add validation
 		erb :'projects/show'
 	end
 
 	post '/projects' do
 		@project = Project.create(params[:new_projects].except("user_ids"))
-
+		# TODO: add validation
 		params[:new_projects][:user_ids].each do |user|
 		@project.users << User.find(user)
 		end
@@ -31,13 +33,13 @@ class ProjectsController < ApplicationController
 	get '/projects/:slug/edit' do
 		@project = Project.find_by(slug: params[:slug])
 		@users = User.all
-
+		# TODO: add validation
 		erb :'projects/show'
 	end
-  # TODO: patch Edit
+  
 	patch '/projects/:slug' do
 		@project = Project.find_by(slug: params[:slug])
-
+		# TODO: add validation
 		params[:project].except("user_ids").each do |attribute, value|
 			@project[:"#{attribute}"] = value
 		end
@@ -51,6 +53,11 @@ class ProjectsController < ApplicationController
 
 		redirect "/projects/#{@project.slug}"
 	end
-  # TODO: delete 
-
+  
+	delete '/project/:slug' do
+		@project = Project.find_by(slug: params[:slug])
+		# TODO: add validation
+		@project.delete
+		redirect '/projects'
+	end
 end

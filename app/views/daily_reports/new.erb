@@ -1,10 +1,12 @@
 <h2>Create New Daily Report:</h2>
+Current User: <%=@user.first_name%> <%=@user.last_name%>
+<br>
 <br>
 
 <form method="post" action="/daily_reports" name="daily_report">
 
 <label for="work_date">Date:</label>
-<input type="date" id="work_date" name="daily_report[work_date]">
+<input type="date" id="work_date" name="daily_report[work_date]" value="<%=Date.today.to_s%>">
 
 <label for="no_of_workers_on_site">Workers Onsite:</label>
 <input type="number" id="no_of_workers_on_site" name="daily_report[no_of_workers_onsite]" placeholder="# of workers on site">
@@ -36,14 +38,6 @@
 <br>
 <hr>
 
-TODO: - should this be a radio or set to only the current user???? Pre filled in radio??<br>
-Select User: <br>
-<% @users.each do |user|%>
-    <input type="radio" id="<%=user.id%>" name="current_user" value="<%=user.id%>>
-    <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
-<%end%>
-<br>
-
 Select Project:<br>
 
 <% @projects.each do |project|%>
@@ -51,7 +45,8 @@ Select Project:<br>
     <label for="<%=project.id%>"><%=project.name%></label><br>
 <%end%>
 <br>
-TODO: make these side by side and pretty with CSS
+
 <hr>
+Current User: <%=@user.first_name%> <%=@user.last_name%><br>
 <input type="submit" name="submit" id="submit" value="Submit Daily Report">
 </form>

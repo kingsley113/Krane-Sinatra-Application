@@ -10,13 +10,16 @@ class DailyReportsController < ApplicationController
     end
 
     get '/daily_reports/new' do
-        @users = User.all
+        # @user = User.find(session[:id])
+        @user = User.find(1) # use this for now until login is working
+        # @users = User.all
         @projects = Project.all
         # TODO: add login validation
         erb :'daily_reports/new'
     end
 
     get '/daily_reports/:id' do
+        
         # TODO: add login validation
         erb :'daily_reports/show'
     end

@@ -1,6 +1,8 @@
 require './config/environment'
 
 class ProjectsController < ApplicationController
+	enable :sessions
+	use Rack::Flash
 
 	get '/projects' do
 		@projects = Project.all

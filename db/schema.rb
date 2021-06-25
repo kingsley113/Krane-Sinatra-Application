@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_24_214659) do
+ActiveRecord::Schema.define(version: 2021_06_25_014512) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.string "work_completed"
@@ -21,13 +21,13 @@ ActiveRecord::Schema.define(version: 2021_06_24_214659) do
     t.time "shift_start_time"
     t.time "shift_end_time"
     t.integer "user_id"
-    t.integer "jobsite_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "work_date"
   end
 
-  create_table "jobsites", force: :cascade do |t|
+  create_table "projects", force: :cascade do |t|
     t.string "name"
     t.string "address"
     t.string "scheduled_duration"
@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2021_06_24_214659) do
     t.string "slug"
   end
 
-  create_table "user_jobsites", force: :cascade do |t|
+  create_table "user_projects", force: :cascade do |t|
     t.integer "user_id"
-    t.integer "jobsite_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

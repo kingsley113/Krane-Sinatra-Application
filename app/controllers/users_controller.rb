@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     end
 
   get '/users/signup' do
-    @jobsites = Jobsite.all
+    @projects = Project.all
     
     # TODO: add validation to only show signup for new users
 
@@ -25,10 +25,10 @@ class UsersController < ApplicationController
   post '/users' do
     # binding.pry
     # TODO: add verification all entries are good
-    @user = User.create(params[:new_user].except("jobsite_ids"))
+    @user = User.create(params[:new_user].except("project_ids"))
 
-    params[:new_user][:jobsite_ids].each do |jobsite|
-      @user.jobsites << Jobsite.find(jobsite)
+    params[:new_user][:project_ids].each do |project|
+      @user.projects << Project.find(project)
     end
 
     redirect "/users/#{@user.slug}"

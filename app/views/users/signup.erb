@@ -28,14 +28,14 @@
 
     <hr>
     <br>
-    Current Jobsites:
+    Current Projects:
     <br>
-    <% @jobsites.each do |jobsite|%>
-        <input type="checkbox" id="<%=jobsite.id%>" name="new_user[jobsite_ids][]" value="<%=jobsite.id%>">
-        <label for="<%=jobsite.id%>"><%=jobsite.name%></label><br>
+    <% @projects.each do |project|%>
+        <input type="checkbox" id="<%=project.id%>" name="new_user[project_ids][]" value="<%=project.id%>">
+        <label for="<%=project.id%>"><%=project.name%></label><br>
     <%end%>
     <br>
-    New Jobsite: <br>
+    New Project: <br>
     <label for="project_name">Project Name:</label>
     <input type="text" id="project_name" name="project[name]" >
     <label for="project_address">Project Address:</label>

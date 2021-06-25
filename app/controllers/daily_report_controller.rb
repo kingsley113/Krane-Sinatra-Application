@@ -11,7 +11,7 @@ class DailyReportsController < ApplicationController
 
     get '/daily_reports/new' do
         @users = User.all
-        @jobsites = Jobsite.all
+        @projects = Project.all
         # TODO: add login validation
         erb :'daily_reports/new'
     end

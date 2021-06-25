@@ -19,6 +19,7 @@ class UsersController < ApplicationController
   end
 
   get '/users/:slug' do
+    redirect_if_not_logged_in
     @user = User.find_by(slug: params[:slug])
 
     erb :'users/show'
@@ -39,6 +40,7 @@ class UsersController < ApplicationController
   
   get '/login' do
     # TODO: looged in validation
+    
     # binding.pry
     erb :'users/login'
   end
@@ -61,6 +63,12 @@ class UsersController < ApplicationController
 
     erb :'users/edit'
   end
+
+  get '/logout' do
+    session.clear
+    redirect '/login'
+  end
+
   # TODO: patch Edit
 
   # TODO: delete 

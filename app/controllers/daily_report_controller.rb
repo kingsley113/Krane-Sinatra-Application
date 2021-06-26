@@ -39,6 +39,8 @@ class DailyReportsController < ApplicationController
 	get '/daily_reports/:id/edit' do
 		redirect_if_not_logged_in
 		@daily_report = DailyReport.find(params[:id])
+		@projects = Project.all
+		@user = current_user
 
 		if @daily_report.user = current_user
 			erb :'daily_reports/edit'

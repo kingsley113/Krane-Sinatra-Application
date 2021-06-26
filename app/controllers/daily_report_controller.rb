@@ -39,7 +39,6 @@ class DailyReportsController < ApplicationController
 		if @daily_report.user = current_user
 			erb :'daily_reports/edit'
 		end
-
 	end
 
 	patch '/daily_reports/:id' do

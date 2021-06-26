@@ -20,12 +20,15 @@ Weather: <%=@daily_report.weather%> <hr style="border-top: dotted 1px;" /> <br>
 
 
 <form method="GET" action="/daily_reports/<%=@daily_report.id%>/edit">
-    <input type="submit" value="Edit Report" id="Edit Report">
+    <input type="submit" value="Edit Report" id="Edit Report" <%= 'disabled' if @daily_report.user != current_user %> >
 </form>
 
 <form method="POST" action="/daily_reports/<%=@daily_report.id%>">
         <input type="hidden" id="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete Report" id="Delete Report">
+        <input type="submit" value="Delete Report" id="Delete Report" <%= 'disabled' if @daily_report.user != current_user %> >
     </form>
+
+<%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %> <br>
+
 TODO: add delete button <br>
 TODO: add edit button <br>

@@ -37,7 +37,7 @@ class ProjectsController < ApplicationController
 		@project = Project.find_by(slug: params[:slug])
 		@users = User.all
 		# TODO: add validation
-		erb :'projects/show'
+		erb :'projects/edit'
 	end
   
 	patch '/projects/:slug' do

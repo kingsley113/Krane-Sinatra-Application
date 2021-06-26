@@ -24,8 +24,6 @@ class DailyReportsController < ApplicationController
 	get '/daily_reports/:id' do
 		redirect_if_not_logged_in
 		@daily_report = DailyReport.find(params[:id])
-		# binding.pry
-		# @start_time = Time.strptime(@daily_report.shift_start_time, "%I:%M")
 
 		erb :'daily_reports/show'
 	end

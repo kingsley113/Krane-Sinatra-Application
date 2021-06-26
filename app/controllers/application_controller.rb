@@ -1,4 +1,5 @@
 require './config/environment'
+require 'time'
 
 class ApplicationController < Sinatra::Base
 

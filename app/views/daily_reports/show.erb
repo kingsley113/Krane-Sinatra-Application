@@ -1,3 +1,31 @@
-this is the daily report 'show' erb <br>
+<h1><%=@daily_report.project.name%></h1>
+<h3><%=@daily_report.work_date%></h3>
+<b>Submitted by: <%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%></b> 
+Workers On Site: <%=@daily_report.no_of_workers_onsite%><br>
+
+Start Time: <%=@daily_report.shift_start_time.strftime('%I:%M %p')%> 
+End Time: <%=@daily_report.shift_end_time.strftime('%I:%M %p')%> 
+Weather: <%=@daily_report.weather%> <hr style="border-top: dotted 1px;" /> <br> 
+
+<b>Work Completed: </b><br> 
+<%=@daily_report.work_completed%> <br><br> <hr style="border-top: dotted 1px;" />
+
+<b>Deliveries: </b><br> 
+<%=@daily_report.deliveries%> <br><br> <hr style="border-top: dotted 1px;" />
+
+<b>Inspections: </b><br> 
+<%=@daily_report.inspections%> <br><br> <hr style="border-top: dotted 1px;" /><br>
+
+
+
+
+<form method="GET" action="/daily_reports/<%=@daily_report.id%>/edit">
+    <input type="submit" value="Edit Report" id="Edit Report">
+</form>
+
+<form method="POST" action="/daily_reports/<%=@daily_report.id%>">
+        <input type="hidden" id="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete Report" id="Delete Report">
+    </form>
 TODO: add delete button <br>
 TODO: add edit button <br>

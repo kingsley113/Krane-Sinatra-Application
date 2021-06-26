@@ -57,7 +57,6 @@ class UsersController < ApplicationController
     erb :'/users/failure'
   end
 
-  # TODO: get Edit
   get '/users/:slug/edit' do
     @user = User.find_by(slug: params[:slug])
     @projects = Project.all
@@ -70,7 +69,6 @@ class UsersController < ApplicationController
     redirect '/login'
   end
 
-  # TODO: patch Edit
   patch '/users/:slug' do
     @current_user = current_user
     @user = User.find_by(slug: params[:slug])

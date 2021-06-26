@@ -49,7 +49,7 @@ class DailyReportsController < ApplicationController
 		@daily_report = DailyReport.find(params[:id])
 
 		params[:daily_report].each do |attribute, value|
-			daily_report[:"#{attribute}"] = value
+			@daily_report[:"#{attribute}"] = value
 		end
 		daily_report.save
 

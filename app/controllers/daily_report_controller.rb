@@ -59,8 +59,11 @@ class DailyReportsController < ApplicationController
 
     delete '/daily_reports/:id' do
         @daily_report = DailyReport.find(params[:id])
-        # TODO: add validation
-        @daily_report.delete
+        if @daily_report.user = current_user
+            @daily_report.delete
+        end
         redirect '/daily_reports'
     end
+
+  end
 end

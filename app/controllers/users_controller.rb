@@ -76,7 +76,6 @@ class UsersController < ApplicationController
     @user = User.find_by(slug: params[:slug])
 
     if @current_user && @user.authenticate(params[:edited_user][:old_password]) 
-      # binding.pry
       # update general attributes
       (params[:edited_user].except("old_password", "password")).each do |attribute, value|
         if attribute == "project_ids"

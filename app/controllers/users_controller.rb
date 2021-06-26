@@ -104,5 +104,12 @@ class UsersController < ApplicationController
     redirect "/users/#{@user.slug}"
   end
 
-  # TODO: delete 
+   
+  delete "/users/:slug"
+    @user = User.find_by(slug: params[:slug])
+
+    if @user = current_user
+      @user.delete
+    end
+  end
 end

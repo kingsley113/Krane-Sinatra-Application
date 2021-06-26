@@ -1,11 +1,12 @@
-<h1><%=@daily_report.project.name%></h1>
+<h1>Daily Report for <%=@daily_report.project.name%></h1>
 <h3><%=@daily_report.work_date%></h3>
-<b>Submitted by: <%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%></b> 
-Workers On Site: <%=@daily_report.no_of_workers_onsite%><br>
+<b>Submitted by: <%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%></b> <br>
 
-Start Time: <%=@daily_report.shift_start_time.strftime('%I:%M %p')%> 
-End Time: <%=@daily_report.shift_end_time.strftime('%I:%M %p')%> 
-Weather: <%=@daily_report.weather%> <hr style="border-top: dotted 1px;" /> <br> 
+
+<b>Start Time:</b> <%=@daily_report.shift_start_time.strftime('%I:%M %p')%> 
+<b>End Time:</b> <%=@daily_report.shift_end_time.strftime('%I:%M %p')%> <br>
+<b>Workers On Site:</b> <%=@daily_report.no_of_workers_onsite%> <br>
+<b>Weather:</b> <%=@daily_report.weather%> <hr style="border-top: dotted 1px;" /> <br> 
 
 <b>Work Completed: </b><br> 
 <%=@daily_report.work_completed%> <br><br> <hr style="border-top: dotted 1px;" />
@@ -30,5 +31,3 @@ Weather: <%=@daily_report.weather%> <hr style="border-top: dotted 1px;" /> <br>
 
 <%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %> <br>
 
-TODO: add delete button <br>
-TODO: add edit button <br>

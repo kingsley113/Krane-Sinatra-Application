@@ -28,7 +28,7 @@ class DailyReportsController < ApplicationController
 
 	post '/daily_reports' do
 		# TODO: add validation
-
+		binding.pry
 		@daily_report = DailyReport.create(params[:daily_report])
 		redirect "/daily_reports/#{@daily_report.id}"
 	end

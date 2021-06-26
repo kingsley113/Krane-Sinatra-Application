@@ -39,9 +39,10 @@ class UsersController < ApplicationController
 
   
   get '/login' do
-    # TODO: looged in validation
-    
-    # binding.pry
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    end
+
     erb :'users/login'
   end
 
@@ -52,8 +53,8 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect "/users/#{@user.slug}"
     end
-    erb :'/users/failure'
 
+    erb :'/users/failure'
   end
 
   # TODO: get Edit
@@ -70,6 +71,38 @@ class UsersController < ApplicationController
   end
 
   # TODO: patch Edit
+  patch '/users/:slug' do
+    @current_user = current_user
+    @user = User.find_by(slug: params[:slug])
+
+    if @current_user && @user.authenticate(params[:edited_user][:old_password]) 
+      # binding.pry
+      # update general attributes
+      (params[:edited_user].except("old_password", "password")).each do |attribute, value|
+        if attribute == "project_ids"
+          @user.projects = []
+          params[:edited_user][:project_ids].each do |project|
+            @user.projects << Project.find(project)
+          end
+        else
+          @user[:"#{attribute}"] = value
+        end
+      end
+    
+      # reset and update password
+      @user.password_digest = nil
+      @user.password = params[:edited_user][:password]
+
+      @user.save
+
+    else
+      session[:message] = "Incorrect Password, try again."
+      redirect "/users/#{@user.slug}/edit"
+    end
+    
+    session[:message] = "Successfully updated user info"
+    redirect "/users/#{@user.slug}"
+  end
 
   # TODO: delete 
 end

@@ -1,1 +1,10 @@
-users account page, show all of thier reports, sorted by project
+users account page, show all of thier reports, sorted by project <br>
+
+<%if session.include?(:message)%>
+        <%= session[:message]%>
+        <% session.delete(:message) %>
+        <br>
+    <% end %>
+
+	TODO: add edit user button <br>
+	TODO: add reports to page <br>

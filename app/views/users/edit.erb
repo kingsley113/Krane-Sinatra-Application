@@ -2,6 +2,8 @@
 <br>
 
 <form method="post" action="/users/<%=@user.slug%>" name="edit_user">
+    <input type="hidden" id="hidden" name="_method" value="patch"> 
+
     <label for="first_name">First Name:</label>
     <input type="text" id="first_name" name="edited_user[first_name]" value="<%=@user.first_name%>">
 
@@ -35,6 +37,12 @@
     
     <hr>
 	<br>
+
+    <%if session.include?(:message)%>
+        <%= session[:message]%>
+        <% session.delete(:message) %>
+        <br>
+    <% end %>
 
 	<label for="old_password">Old Password:</label>
     <input type="password" id="old_password" name="edited_user[old_password]" >

@@ -53,7 +53,7 @@ class DailyReportsController < ApplicationController
 		params[:daily_report].each do |attribute, value|
 			@daily_report[:"#{attribute}"] = value
 		end
-		daily_report.save
+		@daily_report.save
 
 		redirect "/daily_reports/#{@daily_report.id}"
 	end

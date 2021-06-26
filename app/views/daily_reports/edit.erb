@@ -2,7 +2,7 @@
 <br>
 <br>
 
-<form method="post" action="/daily_reports" name="daily_report">
+<form method="post" action="/daily_reports/<%=@daily_report.id%>" name="daily_report">
 <input type="hidden" id="hidden" name="_method" value="patch"> 
 
 <label for="work_date">Date:</label>
@@ -13,16 +13,16 @@
 <br>
 
 <label for="shift_start_time">Shift Start Time:</label>
-<input type="time" id=shift_start_time" name="daily_report[shift_start_time]" value="<%=@daily_report.shift_start_time%>" required> 
+<input type="time" id=shift_start_time" name="daily_report[shift_start_time]" value="<%=@daily_report.shift_start_time.strftime('%H:%M')%>" required> 
 
 <label for="shift_end_time">Shift End Time:</label>
-<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" value="<%=@daily_report.shift_end_time%>" required>
+<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" value="<%=@daily_report.shift_end_time.strftime('%H:%M')%>" required>
 <br>
 
 <hr>
 
 <label for="work_completed">Work Completed:</label><br>
-<textarea id="work_completed" name="daily_report[work_completed]" rows="6" cols="80" placeholder="Describe the work completed on site today." value="<%=@daily_report.work_completed%>" required></textarea>
+<textarea id="work_completed" name="daily_report[work_completed]" rows="6" cols="80" placeholder="Describe the work completed on site today." required><%=@daily_report.work_completed%></textarea>
 <br>
 
 <label for="weather">Weather:</label><br>
@@ -30,11 +30,11 @@
 <br>
 
 <label for="deliveries">Deliveries:</label><br>
-<textarea id="deliveries" name="daily_report[deliveries]" rows="2" cols="80" placeholder="What deliveries were made to the site today." value="<%=@daily_report.deliveries%>"></textarea>
+<textarea id="deliveries" name="daily_report[deliveries]" rows="2" cols="80" placeholder="What deliveries were made to the site today." ><%=@daily_report.deliveries%></textarea>
 <br>
 
 <label for="inspections">Inspections:</label><br>
-<textarea id="inspections" name="daily_report[inspections]" rows="2" cols="80" placeholder="Did any inspections take place on site today?" value="<%=@daily_report.inspections%>"></textarea>
+<textarea id="inspections" name="daily_report[inspections]" rows="2" cols="80" placeholder="Did any inspections take place on site today?" ><%=@daily_report.inspections%></textarea>
 <br>
 <hr>
 

@@ -104,7 +104,7 @@ class UsersController < ApplicationController
   end
 
    
-  delete "/users/:slug"
+  delete "/users/:slug" do
     @user = User.find_by(slug: params[:slug])
 
     if @user = current_user

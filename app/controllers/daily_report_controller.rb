@@ -1,69 +1,66 @@
 require './config/environment'
 
 class DailyReportsController < ApplicationController
-    enable :sessions
-    use Rack::Flash
+	enable :sessions
+	use Rack::Flash
 
-    get '/daily_reports' do
-        @daily_reports = DailyReport.all
-        # "this is the daily report index"
-        # TODO: add login validation
-        erb :'daily_reports/index'
-    end
+	get '/daily_reports' do
+		redirect_if_not_logged_in
+		@daily_reports = DailyReport.all
+		
+		erb :'daily_reports/index'
+	end
 
-    get '/daily_reports/new' do
-        # @user = User.find(session[:id])
-        @user = User.find(1) # use this for now until login is working
-        # @users = User.all
-        @projects = Project.all
-        # TODO: add login validation
-        erb :'daily_reports/new'
-    end
+	get '/daily_reports/new' do
+		redirect_if_not_logged_in
 
-    get '/daily_reports/:id' do
-        
-        # TODO: add login validation
-        erb :'daily_reports/show'
-    end
+		@user = current_user 
+		@projects = Project.all
 
-    post '/daily_reports' do
-        # TODO: add validation
-        binding.pry
-        daily_report = DailyReport.new
-        params[:daily_report].each do |attribute, value|
-            daily_report[:"#{attribute}"] = value
-        end
-        daily_report.save
-    end
+		erb :'daily_reports/new'
+	end
 
-    get '/daily_reports/:id/edit' do
-        @daily_report = DailyReport.find(params[:id])
+	get '/daily_reports/:id' do
+		redirect_if_not_logged_in
 
-        # TODO: add login and user validation
+		erb :'daily_reports/show'
+	end
 
-        erb :'daily_reports/edit'
-    end
- 
-    post '/daily_reports/:id' do
-        # TODO: add validation
-        
-        @daily_report = DailyReport.find(params[:id])
+	post '/daily_reports' do
+		# TODO: add validation
 
-        params[:daily_report].each do |attribute, value|
-            daily_report[:"#{attribute}"] = value
-        end
-        daily_report.save
+		@daily_report = DailyReport.create(params[:daily_report])
+		redirect "/daily_reports/#{@daily_report.id}"
+	end
 
-        redirect "/daily_reports/#{@daily_report.id}"
-    end
+	get '/daily_reports/:id/edit' do
+		redirect_if_not_logged_in
+		@daily_report = DailyReport.find(params[:id])
 
-    delete '/daily_reports/:id' do
-        @daily_report = DailyReport.find(params[:id])
-        if @daily_report.user = current_user
-            @daily_report.delete
-        end
-        redirect '/daily_reports'
-    end
+		if @daily_report.user = current_user
+			erb :'daily_reports/edit'
+		end
 
-  end
+	end
+
+	patch '/daily_reports/:id' do
+		# TODO: add validation
+		
+		@daily_report = DailyReport.find(params[:id])
+
+		params[:daily_report].each do |attribute, value|
+			daily_report[:"#{attribute}"] = value
+		end
+		daily_report.save
+
+		redirect "/daily_reports/#{@daily_report.id}"
+	end
+
+	delete '/daily_reports/:id' do
+		@daily_report = DailyReport.find(params[:id])
+		if @daily_report.user = current_user
+				@daily_report.delete
+		end
+		redirect '/daily_reports'
+	end
 end

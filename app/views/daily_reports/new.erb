@@ -41,7 +41,7 @@ Current User: <%=@user.first_name%> <%=@user.last_name%>
 Select Project:<br>
 
 <% @projects.each do |project|%>
-    <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>>
+    <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>">
     <label for="<%=project.id%>"><%=project.name%></label><br>
 <%end%>
 <br>
@@ -49,4 +49,6 @@ Select Project:<br>
 <hr>
 Current User: <%=@user.first_name%> <%=@user.last_name%><br>
 <input type="submit" name="submit" id="submit" value="Submit Daily Report">
+
+<input type="hidden" id="hidden" name="daily_report[user_id]" value="<%=@user.id%>"> 
 </form>

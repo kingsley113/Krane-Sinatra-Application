@@ -27,9 +27,8 @@ class DailyReportsController < ApplicationController
 	end
 
 	post '/daily_reports' do
-		# TODO: add validation
-		binding.pry
 		@daily_report = DailyReport.create(params[:daily_report])
+
 		redirect "/daily_reports/#{@daily_report.id}"
 	end
 
@@ -44,8 +43,6 @@ class DailyReportsController < ApplicationController
 	end
 
 	patch '/daily_reports/:id' do
-		# TODO: add validation
-		
 		@daily_report = DailyReport.find(params[:id])
 
 		params[:daily_report].each do |attribute, value|

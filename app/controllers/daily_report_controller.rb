@@ -7,7 +7,13 @@ class DailyReportsController < ApplicationController
 	get '/daily_reports' do
 		redirect_if_not_logged_in
 		@daily_reports = DailyReport.all
-		
+		@projects = Project.all
+		# binding.pry
+		# project_ids = @daily_reports.map do |hash|
+		# 	{project: hash[:project_id]} 
+		# end
+		# project_ids.uniq! {|hash| hash[:project]}
+		# binding.pry
 		erb :'daily_reports/index'
 	end
 

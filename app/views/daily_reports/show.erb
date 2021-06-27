@@ -27,7 +27,7 @@
 <form method="POST" action="/daily_reports/<%=@daily_report.id%>">
         <input type="hidden" id="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete Report" id="Delete Report" <%= 'disabled' if @daily_report.user != current_user %> >
-    </form>
+</form>
 
 <%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %> <br>
 

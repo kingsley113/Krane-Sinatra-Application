@@ -48,15 +48,16 @@ class ProjectsController < ApplicationController
 	patch '/projects/:slug' do
 		@project = Project.find_by(slug: params[:slug])
 		# TODO: add validation
-		params[:project].except("user_ids").each do |attribute, value|
-			@project[:"#{attribute}"] = value
+		if params[:edit_project].include?("user_ids")
+			params[:edit_project].except("user_ids").each do |attribute, value|
+				@project[:"#{attribute}"] = value
+			end
+		
+			@project.users = [] 
+			params[:edit_project][:user_ids].each do |user_id|
+				@project.users << User.find(user_id)
+			end
 		end
-
-		@project[:user_ids] = [] 
-		params[:user_ids].each do |user|
-			@project[:user_ids] << User.find(user.id)
-		end
-
 		@project.save
 
 		redirect "/projects/#{@project.slug}"

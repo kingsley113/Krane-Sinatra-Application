@@ -47,7 +47,7 @@ class ProjectsController < ApplicationController
   
 	patch '/projects/:slug' do
 		@project = Project.find_by(slug: params[:slug])
-		# TODO: add validation
+
 		if params[:edit_project].include?("user_ids")
 			params[:edit_project].except("user_ids").each do |attribute, value|
 				@project[:"#{attribute}"] = value

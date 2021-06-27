@@ -28,7 +28,7 @@
     Current Users:
     <br>
     <% @users.each do |user|%>
-        <input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" >
+        <input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" <%= 'checked' if user == current_user%> >
         <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
     <%end%>
     <br>

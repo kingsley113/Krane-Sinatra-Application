@@ -25,3 +25,9 @@ Scheduled Finish Date: <%=@project.finish_date%> <br>
 	Work Completed: <%=report.work_completed%>
 	<hr style="border-top: dotted 1px;" />
 <%end%>
+
+
+<form method="GET" action="/projects/<%=@project.slug%>/edit">
+    <input type="submit" value="Edit Project" id="Edit Project" >
+</form>
+

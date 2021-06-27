@@ -26,10 +26,12 @@ class ProjectsController < ApplicationController
 	end
 
 	post '/projects' do
-		@project = Project.create(params[:new_projects].except("user_ids"))
-		# TODO: add validation
-		params[:new_projects][:user_ids].each do |user|
-		@project.users << User.find(user)
+		@project = Project.create(params[:new_project].except("user_ids"))
+
+		if params[:new_project].include?("user_ids")
+			params[:new_project][:user_ids].each do |user|
+			@project.users << User.find(user)
+			end
 		end
 
 		redirect "/projects/#{@project.slug}"

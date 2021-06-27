@@ -4,23 +4,23 @@
 <form method="post" action="/projects" name="new_project">
 <input type="hidden" id="hidden" name="_method" value="patch"> 
     <label for="project_name">Project Name:</label>
-    <input type="text" id="project_name" name="new_project[project_name]" value="<%=@project.name%>" >
+    <input type="text" id="project_name" name="new_project[name]" value="<%=@project.name%>" required>
 	
 	
     
 	<label for="address">Site Address:</label>
-    <input type="text" id="address" name="new_project[address]" value="<%=@project.address%>" >
+    <input type="text" id="address" name="new_project[address]" value="<%=@project.address%>" required>
 
     <br>
 
     <label for="scheduled_durations">Scheduled Duration:</label>
-    <input type="text" id="scheduled_duration" name="new_project[scheduled_duration]" value="<%=@project.scheduled_duration%>" >
+    <input type="text" id="scheduled_duration" name="new_project[scheduled_duration]" value="<%=@project.scheduled_duration%>" required>
 
 	<label for="start_date">Start Date:</label>
-    <input type="date" id="start_date" name="new_project[start_date]" value="<%=@project.start_date%>" >
+    <input type="date" id="start_date" name="new_project[start_date]" value="<%=@project.start_date%>" required>
 
     <label for="finish_date">Finish Date:</label>
-    <input type="date" id="finish_date" name="new_project[finish_date]" value="<%=@project.finish_date%>" >
+    <input type="date" id="finish_date" name="new_project[finish_date]" value="<%=@project.finish_date%>" required>
 
     <br>
 
@@ -29,7 +29,7 @@
     Current Users:
     <br>
     <% @users.each do |user|%>
-        <input type="checkbox" id="<%=user.id%>" name="project[user_ids][]" value="<%=user.id%>" <%='checked' if @project.users.include?(user)%> >
+        <input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" <%='checked' if @project.users.include?(user)%> >
         <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
     <%end%>
     <br>

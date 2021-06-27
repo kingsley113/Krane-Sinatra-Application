@@ -5,25 +5,27 @@ class ProjectsController < ApplicationController
 	use Rack::Flash
 
 	get '/projects' do
+		redirect_if_not_logged_in
 		@projects = Project.all
-		# TODO: add login validation
+		
 		erb :'projects/index'
 	end
 
 	get '/projects/new' do
+		redirect_if_not_logged_in
 		@users = User.all
-		# TODO: add login validation
+		
 		erb :'projects/new'
 	end
 
 	get '/projects/:slug' do
+		redirect_if_not_logged_in
 		@project = Project.find_by(slug: params[:slug])
-		# TODO: add validation
+		
 		erb :'projects/show'
 	end
 
 	post '/projects' do
-		# binding.pry
 		@project = Project.create(params[:new_projects].except("user_ids"))
 		# TODO: add validation
 		params[:new_projects][:user_ids].each do |user|
@@ -34,9 +36,10 @@ class ProjectsController < ApplicationController
 	end
 
 	get '/projects/:slug/edit' do
+		redirect_if_not_logged_in
 		@project = Project.find_by(slug: params[:slug])
 		@users = User.all
-		# TODO: add validation
+
 		erb :'projects/edit'
 	end
   
@@ -58,9 +61,10 @@ class ProjectsController < ApplicationController
 	end
   
 	delete '/project/:slug' do
+		redirect_if_not_logged_in
 		@project = Project.find_by(slug: params[:slug])
-		# TODO: add validation
 		@project.delete
+
 		redirect '/projects'
 	end
 end

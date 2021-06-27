@@ -20,7 +20,8 @@ Scheduled Finish Date: <%=@project.finish_date%> <br>
 <%sorted_reports_by_date = @project.daily_reports.sort_by{|k| k[:work_date]} %>
 
 <%sorted_reports_by_date.each do |report|%>
-	<li> <a href="/daily_reports/<%=report.id%>" ><%=report.work_date%> </a>
-	Submitted by: <%=report.user.first_name%> <%=report.user.last_name%>
+	<a href="/daily_reports/<%=report.id%>" ><%=report.work_date%> </a>
+	Submitted by: <%=report.user.first_name%> <%=report.user.last_name%> <br>
+	Work Completed: <%=report.work_completed%>
 	<hr style="border-top: dotted 1px;" />
 <%end%>

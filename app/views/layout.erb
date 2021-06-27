@@ -2,7 +2,18 @@
 <html>
   <head>
     <title>Krane</title>
+
+    <style>
+      #footer {
+   position:absolute;
+   bottom:0;
+   
+   height:60px;   /* Height of the footer */
+    }
+    </style>
+
   </head>
+
   <body>
 
     <div class="container">
@@ -24,6 +35,11 @@
       <%= yield %>
     
     </div>
+
+  <div id="footer">
+  Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
+  &emsp; &emsp; <a href="/logout">Log Out</a> 
+  </div>
 
   </body>
 </html>

@@ -1,5 +1,24 @@
 <h3><%=@project.name%> </h3>
-	<%=@project.address%> <br>
-	<%=@project.scheduled_duration%> <br>
-	<%=@project.start_date%> <br>
-	<%=@project.finish_date%> <br>
+Site Address: <%=@project.address%> <br>
+Scheduled Duration: <%=@project.scheduled_duration%> <br>
+Scheduled Start Date: <%=@project.start_date%> <br>
+Scheduled Finish Date: <%=@project.finish_date%> <br>
+
+<hr>
+
+<h3>Users on Project</h3>
+<ul>
+<%@project.users.each do |user|%>
+	<li> <a href="/users/<%=user.slug%>" ><%=user.first_name%> <%=user.last_name%></a>
+<%end%>
+</ul>
+
+<hr>
+
+<h3>All Daily Reports: </h3>
+
+<%@project.daily_reports.each do |report|%>
+	<li> <a href="/daily_reports/<%=report.id%>" ><%=report.work_date%> </a>
+	Submitted by: <%=report.user.first_name%> <%=report.user.last_name%>
+	<hr style="border-top: dotted 1px;" />
+<%end%>

@@ -1,9 +1,8 @@
 <%@projects.each do |project|%>
 	<h3><%=project.name%> </h3>
-	<%project.address%> <br>
-	<%project.scheduled_duration%> <br>
-	<%=project.start_date%> <br>
-	<%=project.finish_date%> <br>
+	Site Address: <%=project.address%> <br>
+	Scheduled Duration: <%=project.scheduled_duration%> <br>
+	
 
 	<a href="/projects/<%=project.slug%>" >View Project Details</a>
 	<hr style="border-top: dotted 1px;" />

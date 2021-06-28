@@ -6,7 +6,18 @@ users account page, show all of thier reports, sorted by project <br>
         <br>
     <% end %>
 
-	TODO: add 'edit user' button <br>
+	
 	TODO: add reports to page <br>
-    TODO: add 'delete user' button <br>
+    
 
+
+
+
+<form method="GET" action="/users/<%=@user.slug%>/edit">
+    <input type="submit" value="Edit User Details" id="Edit User" <%= 'disabled' if @user != current_user %> >
+</form>
+
+<form method="POST" action="/users/<%=@user.slug%>">
+        <input type="hidden" id="hidden" name="_method" value="DELETE">
+        <input type="submit" value="Delete User" id="Delete USer" <%= 'disabled' if @user != current_user %> >
+</form>

@@ -31,17 +31,21 @@
         <%end%>	
     <%end%>
 
-    <%@sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
+    <%if project_reports != [] %>
+        <%@sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
 
-    <%@sorted_reports_by_date.each do |report| %>
-        <b><%=report.work_date%></b> - Weather: <%=report.weather%> <br> 
-        Work Completed: <%=report.work_completed%> <br>
-        <a href="/daily_reports/<%=report.id%>" >View Full Report</a>
+        <%@sorted_reports_by_date.each do |report| %>
+            <b><%=report.work_date%></b> - Weather: <%=report.weather%> <br> 
+            Work Completed: <%=report.work_completed%> <br>
+            <a href="/daily_reports/<%=report.id%>" >View Full Report</a>
 
-        <%if report != @sorted_reports_by_date.last %>
-            <hr style="border-top: dotted 1px;" />
-        <%end%>
+            <%if report != @sorted_reports_by_date.last %>
+                <hr style="border-top: dotted 1px;" />
+            <%end%>
 
+        <% end %>
+    <% else %>
+        <%= "**No reports submitted**" %>
     <% end %>
         
     <hr style="border-top: solid 2px;" />

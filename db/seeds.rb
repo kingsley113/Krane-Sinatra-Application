@@ -14,7 +14,7 @@ skyline_users.each do |user|
 end		
 
 @flatiron = Project.create(name: "Flatiron Building", address: "136 Smith Ave", scheduled_duration: "85 Weeks",	start_date: "2021-06-25", finish_date: "2022-12-21") 
-flatiron_users = ["1", ,"2", "3", "5"]
+flatiron_users = ["1", "2", "3", "5"]
 flatiron_users.each do |user|
 	@flatiron.users << User.find(user)
 end	

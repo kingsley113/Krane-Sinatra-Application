@@ -5,7 +5,7 @@
 
     <style>
       #footer {
-   position:absolute;
+   position:relative;
    bottom:0;
    
    height:60px;   /* Height of the footer */
@@ -38,6 +38,7 @@
     </div>
 
   <div id="footer">
+  <br>
     Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
     &emsp; &emsp; <a href="/logout">Log Out</a> 
   </div>

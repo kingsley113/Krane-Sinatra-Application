@@ -5,8 +5,8 @@
 <% end %>
 
 <h1><%=@user.first_name%> <%=@user.last_name%></h1>
-Position: <%=@user.position%> <br>
-Email: <%=@user.email%> <br> 
+<b>Position: <%=@user.position%> <br> </b>
+<b>Email: <%=@user.email%> <br> </b>
 <br>
 <h3>All Projects:</h3>
 <ul>
@@ -60,3 +60,5 @@ Email: <%=@user.email%> <br>
         <input type="hidden" id="hidden" name="_method" value="DELETE">
         <input type="submit" value="Delete User" id="Delete USer" <%= 'disabled' if @user != current_user %> >
 </form>
+
+<%= 'Cannot edit other users details.' if @user != current_user %> <br>

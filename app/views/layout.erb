@@ -21,6 +21,7 @@
       <a href="/">Home</a> &emsp;
       <a href="/users/signup">Sign Up</a> &emsp;
       <a href="/login">Log In</a> &emsp;
+      <a href="/users">All Users</a> &emsp;
       <a href="/daily_reports">All Daily Reports</a> &emsp;
       <a href="/daily_reports/new">New Report</a> &emsp;
       <a href="/projects">All Projects</a> &emsp;
@@ -37,8 +38,8 @@
     </div>
 
   <div id="footer">
-  Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
-  &emsp; &emsp; <a href="/logout">Log Out</a> 
+    Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
+    &emsp; &emsp; <a href="/logout">Log Out</a> 
   </div>
 
   </body>

@@ -1,1 +1,11 @@
 user index 
+<%@users.each do |user|%>
+	<h3><%=user.first_name%> <%=user.last_name%></h3>
+	Position: <%=user.position%> <br>
+	Email: <%=user.email%> <br>
+	
+	<a href="/users/<%=user.slug%>" >View User Details</a>
+
+	<hr style="border-top: dotted 1px;" />
+
+<%end%>

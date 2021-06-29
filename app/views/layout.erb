@@ -10,25 +10,31 @@
       <header>
         <nav class="navigation-bar">
           <img src="/images/Krane_logo_white.png" alt="Krane Logo" class="logo">
-          <a href="/">Home</a>
-          <a href="/login">Log In</a>
-          <a href="/users">All Users</a>
-          <a href="/daily_reports">All Daily Reports</a>
-          <a href="/daily_reports/new">New Report</a>
-          <a href="/projects">All Projects</a>
+         
+          <div class="skewed-button">
+            <p><a href="/">Home</a></p>
+          </div>
+
+          <div class="skewed-button">
+            <p><a href="/daily_reports/new">New Report</a></p>
+          </div>
+
+          <div class="skewed-button">
+            <p><a href="/users">All Users</a></p>
+          </div>
+
+          <div class="skewed-button">
+            <p><a href="/daily_reports">All Reports</a></p>
+          </div>
+
+          <div class="skewed-button">
+            <p><a href="/projects">All Projects</a></p>
+          </div>
+
+          <div class="skewed-button">
+            <p><a href="/login">Log In</a></p>
+          </div>
         </nav>
-
-
-
-
-
-
-
-
-
-
-        
-
       </header>
 
       <main>
@@ -38,8 +44,8 @@
 
       </main>
       <footer>
-        Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
-        &emsp; &emsp; <a href="/logout">Log Out</a>
+        <p>Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
+        &emsp; &emsp; <a href="/logout">Log Out</a></p>
       </footer>
     </div>
   </body>

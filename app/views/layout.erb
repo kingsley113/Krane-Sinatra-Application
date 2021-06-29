@@ -1,38 +1,43 @@
 <!DOCTYPE html>
 <html ang="en">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8", name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
      <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   </head>
 
   <body>
-    <div class="flex-container">
+    <div class="flex-container"> 
       <header>
-        <div class="item setWidth">
-          <a href="/">Home</a> </div>
-        <div class="item setWidth">
-          <a href="/users/signup">Sign Up</a></div>
-        <div class="item setWidth">
-          <a href="/login">Log In</a> </div>
-        <div class="item setWidth">
-          <a href="/users">All Users</a> </div> 
-        <div class="item setWidth">
-          <a href="/daily_reports">All Daily Reports</a> </div> 
-        <div class="item setWidth">
-          <a href="/daily_reports/new">New Report</a> </div> 
-        <div class="item setWidth">
-          <a href="/projects">All Projects</a> </div> 
-        <div class="item setWidth">
-          <a href="/projects/new">New Project</a> </div> 
-        <div class="item setWidth">
-          <a href="/logout">Log Out</a> </div>  
-      </header>
-      <main></main>
-        <%= yield %>
-    
+        <nav class="navigation-bar">
+          <img src="/images/Krane_logo_white.png" alt="Krane Logo" class="logo">
+          <a href="/">Home</a>
+          <a href="/login">Log In</a>
+          <a href="/users">All Users</a>
+          <a href="/daily_reports">All Daily Reports</a>
+          <a href="/daily_reports/new">New Report</a>
+          <a href="/projects">All Projects</a>
+        </nav>
 
+
+
+
+
+
+
+
+
+
+        
+
+      </header>
+
+      <main>
+        TODO: move sign up to login page <a href="/users/signup">Sign Up</a>
+        TODO: move new project link to all projects page  <a href="/projects/new">New Project</a>
+        <%= yield %>
+
+      </main>
       <footer>
-        <br>
         Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
         &emsp; &emsp; <a href="/logout">Log Out</a>
       </footer>

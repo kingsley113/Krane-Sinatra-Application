@@ -4,7 +4,8 @@
         <%= session[:message]%>
         <% session.delete(:message) %>
         <br>
-    <% end %>
+<% end %>
+
 <br>
 
 <form method="post" action="/daily_reports" name="daily_report">
@@ -20,7 +21,7 @@
 <input type="time" id=shift_start_time" name="daily_report[shift_start_time]" required> 
 
 <label for="shift_end_time">Shift End Time:</label>
-<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" required>
+<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" >
 <br>
 
 <hr>

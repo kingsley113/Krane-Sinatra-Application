@@ -1,3 +1,9 @@
+<%if session.include?(:message)%>
+        <%= session[:message]%>
+        <% session.delete(:message) %>
+        <br>
+<% end %>
+
 <h1>Daily Report for <%=@daily_report.project.name%></h1>
 <h3><%=@daily_report.work_date%></h3>
 <b>Submitted by: <%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%></b> <br>

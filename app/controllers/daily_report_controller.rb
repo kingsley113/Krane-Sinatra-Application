@@ -31,7 +31,12 @@ class DailyReportsController < ApplicationController
 	post '/daily_reports' do
 		@daily_report = DailyReport.create(params[:daily_report])
 
-		redirect "/daily_reports/#{@daily_report.id}"
+		if @daily_report.save
+			redirect "/daily_reports/#{@daily_report.id}"
+		else
+			session[:message] = "Please fill out all required fields."
+			redirect '/daily_reports/new'
+		end
 	end
 
 	get '/daily_reports/:id/edit' do
@@ -48,12 +53,20 @@ class DailyReportsController < ApplicationController
 	patch '/daily_reports/:id' do
 		@daily_report = DailyReport.find(params[:id])
 
-		params[:daily_report].each do |attribute, value|
-			@daily_report[:"#{attribute}"] = value
+		@daily_report.update(params[:daily_report])
+		# params[:daily_report].each do |attribute, value|
+		# 	@daily_report[:"#{attribute}"] = value
+		# end
+		# @daily_report.save
+		if @daily_report.save
+			session[:message] = "Report edited successfully."
+			redirect "/daily_reports/#{@daily_report.id}"
+		else
+			session[:message] = "Please fill out all required fields."
+			redirect "/daily_reports/#{@daily_report.id}/edit"
 		end
-		@daily_report.save
 
-		redirect "/daily_reports/#{@daily_report.id}"
+		# redirect "/daily_reports/#{@daily_report.id}"
 	end
 
 	delete '/daily_reports/:id' do

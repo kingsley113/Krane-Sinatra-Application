@@ -2,6 +2,12 @@
 <br>
 <br>
 
+<%if session.include?(:message)%>
+        <%= session[:message]%>
+        <% session.delete(:message) %>
+        <br>
+<% end %>
+
 <form method="post" action="/daily_reports/<%=@daily_report.id%>" name="daily_report">
 <input type="hidden" id="hidden" name="_method" value="patch"> 
 
@@ -16,7 +22,7 @@
 <input type="time" id=shift_start_time" name="daily_report[shift_start_time]" value="<%=@daily_report.shift_start_time.strftime('%H:%M')%>" required> 
 
 <label for="shift_end_time">Shift End Time:</label>
-<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" value="<%=@daily_report.shift_end_time.strftime('%H:%M')%>" required>
+<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" value="<%=@daily_report.shift_end_time.strftime('%H:%M')%>" >
 <br>
 
 <hr>

@@ -1,46 +1,41 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html ang="en">
   <head>
-    <title>Krane</title>
-
-    <style>
-      #footer {
-   position:relative;
-   bottom:0;
-   
-   height:60px;   /* Height of the footer */
-    }
-    </style>
-
+    <meta charset="UTF-8">
+     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
   </head>
 
   <body>
-
-    <div class="container">
-
-      <a href="/">Home</a> &emsp;
-      <a href="/users/signup">Sign Up</a> &emsp;
-      <a href="/login">Log In</a> &emsp;
-      <a href="/users">All Users</a> &emsp;
-      <a href="/daily_reports">All Daily Reports</a> &emsp;
-      <a href="/daily_reports/new">New Report</a> &emsp;
-      <a href="/projects">All Projects</a> &emsp;
-      <a href="/projects/new">New Project</a> &emsp;
-      <a href="/logout">Log Out</a>  
-      
-      <br>
-      
-      <hr>
-      
-      <%= yield %>
+    <div class="flex-container">
+      <header>
+        <div class="item setWidth">
+          <a href="/">Home</a> </div>
+        <div class="item setWidth">
+          <a href="/users/signup">Sign Up</a></div>
+        <div class="item setWidth">
+          <a href="/login">Log In</a> </div>
+        <div class="item setWidth">
+          <a href="/users">All Users</a> </div> 
+        <div class="item setWidth">
+          <a href="/daily_reports">All Daily Reports</a> </div> 
+        <div class="item setWidth">
+          <a href="/daily_reports/new">New Report</a> </div> 
+        <div class="item setWidth">
+          <a href="/projects">All Projects</a> </div> 
+        <div class="item setWidth">
+          <a href="/projects/new">New Project</a> </div> 
+        <div class="item setWidth">
+          <a href="/logout">Log Out</a> </div>  
+      </header>
+      <main></main>
+        <%= yield %>
     
+
+      <footer>
+        <br>
+        Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
+        &emsp; &emsp; <a href="/logout">Log Out</a>
+      </footer>
     </div>
-
-  <div id="footer">
-  <br>
-    Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
-    &emsp; &emsp; <a href="/logout">Log Out</a> 
-  </div>
-
   </body>
 </html>

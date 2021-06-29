@@ -1,0 +1,59 @@
+html,
+
+body {
+	background-color: #ffa03b;
+}
+
+#footer {
+	position:relative;
+	bottom:0;	
+	height:60px;   /* Height of the footer */
+}
+
+header {
+	display: flex;
+	background-color: #ffa03b;
+	
+	height: 80px;
+	width: 100%;
+	flex-shrink: 0;
+  }
+  
+  main {
+	display: flex;
+	background-color: #92C9D5;
+	width: 100%;
+	height: 100%;
+	/* flex-wrap: wrap;
+	flex-direction: column; */
+	flex-flow: row wrap;
+	justify-content: center;
+	align-items: center;
+	align-content: space-around;
+  }
+  
+  footer {
+	background-color: #DAEEEF;
+	height: 80px;
+	width: 100%;
+	flex-shrink: 3;
+  }
+  .flex-container {
+	display: flex;
+	width: 100vw;
+	height: 100vh;
+	flex-direction: column;
+  }
+  
+  .item {
+	height: 20px;
+	width: 100px;
+	margin: 5px;
+	background-color: #FCF2EC;
+  }
+  
+  .setWidth {
+	/* flex-basis: 100px;
+	flex-grow: 1; */
+	flex: 3 0 100px;
+  }

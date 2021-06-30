@@ -1,13 +1,27 @@
-<h1>All Projects: </h1>
+<!DOCTYPE html>
+<html ang="en">
+  <head>
+    <meta charset="UTF-8", name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+  </head>
 
-<%@projects.each do |project|%>
-	<h3><%=project.name%> </h3>
-	Site Address: <%=project.address%> <br>
-	Scheduled Duration: <%=project.scheduled_duration%> <br>
-	
+<body>
+	<h1>All Projects: </h1>
 
-	<a href="/projects/<%=project.slug%>" >View Project Details</a>
-	<hr style="border-top: dotted 1px;" />
+	<%@projects.each do |project|%>
+		<h3><%=project.name%> </h3>
+		Site Address: <%=project.address%> <br>
+		Scheduled Duration: <%=project.scheduled_duration%> <br>
+		
+
+		<a href="/projects/<%=project.slug%>" >View Project Details</a>
+		<hr style="border-top: dotted 1px;" />
 
 
-<%end%>
+	<%end%>
+
+	<br>
+
+	<a href="/projects/new">Create New Project</a>
+
+</body>

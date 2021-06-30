@@ -1,15 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8", name="viewport", content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
+     
+  </head>
 
-<%if session.include?(:message)%>
-    <%= session[:message]%>
-    <% session.delete(:message) %>
-<% end %>
+    <body>
+        <div class="login-page">
+        <br>
+        <br>
+            <%if session.include?(:message)%>
+                <%= session[:message]%>
+                <% session.delete(:message) %>
+            <% end %>
 
-<form method="post" action="/login" name="login">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username" >
+            <form method="post" action="/login" name="login">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" >
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" >
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" >
 
-    <input type="submit" name="submit" id="submit" value="Login">
-</form>
+                <input type="submit" name="submit" id="submit" value="Login">
+            </form>
+            <br>
+            
+            New User?
+            <a href="/users/signup">Sign Up</a>
+            
+        </div>
+    </body>
+</html>

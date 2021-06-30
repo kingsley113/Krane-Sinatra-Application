@@ -38,14 +38,16 @@
       </header>
 
       <main>
-        TODO: move sign up to login page <a href="/users/signup">Sign Up</a>
-        TODO: move new project link to all projects page  <a href="/projects/new">New Project</a>
         <%= yield %>
-
       </main>
+      
       <footer>
-        <p>Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
-        &emsp; &emsp; <a href="/logout">Log Out</a></p>
+        <%if logged_in? %>
+          <p>Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
+          &emsp; &emsp; <a href="/logout">Log Out</a></p>
+        <%else%>
+          <a href="/login">Log In</a> &emsp; or &emsp; <a href="/users/signup">Sign Up</a>
+        <%end%>
       </footer>
     </div>
   </body>

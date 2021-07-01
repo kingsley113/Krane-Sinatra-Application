@@ -27,7 +27,7 @@ class UsersController < ApplicationController
 
   post '/users' do
     # binding.pry
-    # TODO: add verification all entries are good
+    # TODO: add verification all entries are good and unique
     @user = User.create(params[:new_user].except("project_ids"))
 
     params[:new_user][:project_ids].each do |project|

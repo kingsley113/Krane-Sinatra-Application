@@ -97,9 +97,14 @@ footer {
 }
 
 /* login page styles */
-.login-page{
+.login-page {
 	width: 100%;
 	height: 20%;
 	margin: auto;
+	text-align: center;
+}
+
+/* general centered text */
+.centered {
 	text-align: center;
 }

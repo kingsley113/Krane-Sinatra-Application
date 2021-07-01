@@ -17,10 +17,12 @@
             <%end%>
         </ul>
         <hr style="border-top: solid 2px;" />
+        
+    </div>
+    <div class="all-reports-header">
         <h3>All Reports by Project:</h3>
     </div>
 </div>
-
 <%@user.projects.each do |project| %>
     <div class="project-group">
         <h3><%=project.name%> </h3>
@@ -36,9 +38,11 @@
             <%@sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
 
             <%@sorted_reports_by_date.each do |report| %>
-                <b><%=report.work_date%></b> - Weather: <%=report.weather%> <br> 
-                Work Completed: <%=report.work_completed%> <br>
-                <a href="/daily_reports/<%=report.id%>" >View Full Report</a>
+                <div class="report-summary-item">
+                    <b><%=report.work_date%></b> - Weather: <%=report.weather%> <br> 
+                    Work Completed: <%=report.work_completed%> <br>
+                    <a href="/daily_reports/<%=report.id%>" >View Full Report</a>
+                </div>
 
                 <%if report != @sorted_reports_by_date.last %>
                     <hr style="border-top: dotted 1px;" />
@@ -55,15 +59,19 @@
     
 
 
+<div class="background-transition">
+</div>
 
+<div id="edit-user-buttons">
+    <form method="GET" action="/users/<%=@user.slug%>/edit" >
+        <input class="button" type="submit" value="EDIT USER DETAILS" id="Edit User" <%= 'disabled' if @user != current_user %> >
+    </form>
 
-<form method="GET" action="/users/<%=@user.slug%>/edit">
-    <input type="submit" value="Edit User Details" id="Edit User" <%= 'disabled' if @user != current_user %> >
-</form>
+    <form method="POST" action="/users/<%=@user.slug%>">
+            <input type="hidden" id="hidden" name="_method" value="DELETE">
+            <input class="button" type="submit" value="DELETE USER" id="Delete USer" <%= 'disabled' if @user != current_user %> >
+    </form>
 
-<form method="POST" action="/users/<%=@user.slug%>">
-        <input type="hidden" id="hidden" name="_method" value="DELETE">
-        <input type="submit" value="Delete User" id="Delete USer" <%= 'disabled' if @user != current_user %> >
-</form>
-
-<%= 'Cannot edit other users details.' if @user != current_user %> <br>
+    <br>
+    <%= 'Cannot edit other users details.' if @user != current_user %> <br>
+</div>

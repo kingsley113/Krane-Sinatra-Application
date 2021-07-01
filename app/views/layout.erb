@@ -37,10 +37,15 @@
       </header>
 
       <main>
+        <div class="orange-white-transition">
+        </div>
         <%= yield %>
       </main>
-      
+
       <footer>
+        <div class="white-orange-transition">
+        </div>
+        
         <%if logged_in? %>
           <p>Currently Logged in as: <a href="/users/<%=current_user.slug%>" ><%=current_user.first_name%> <%=current_user.last_name%> </a> 
           &emsp; &emsp; <a href="/logout">Log Out</a></p>

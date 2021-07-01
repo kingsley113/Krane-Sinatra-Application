@@ -33,7 +33,7 @@ header {
   
 main {
 	display: flex;
-	background-color: #ffa03b;
+	background-color: #faf1e7;
 	width: 100%;
 	height: 100%;
 	flex-flow: row wrap;
@@ -43,10 +43,10 @@ main {
 
 footer {
 	background-color: #ffa03b;
-	height: 60px;
+	height: 80px;
 	width: 100vw;
 	flex-shrink: 3;
-	line-height: 30px;
+	line-height: 20px;
 	text-align: center;
 	color: white;
 	font-size: 14pt;
@@ -100,7 +100,7 @@ footer {
 
 /* user show page styles */
 .user-page-header {
-	width: 100vw;
+	width: 90%;
 }
 
 .left-justify-text {
@@ -108,14 +108,12 @@ footer {
 }
 
 .all-reports-header {
-	/* background-image: linear-gradient(#ffa03b, #faf1e7); */
-	/* height: 80px; */
-	width: 100vw;
+	width: 90vw;
 	background-color: #faf1e7;
 }
 
 .item-group {
-	width: 100%;
+	width: 90%;
 	background-color: #faf1e7;
 }
 
@@ -124,12 +122,10 @@ footer {
 }
 
 /* button styles */
-
-
 .button {
 	background-color: #ffa03b;
 	color: white;
-	border: 2px solid white; 
+	border: 0px solid white; 
 	transition-duration: 0.4s;
 	width: 200px;
 	height: 40px;
@@ -147,6 +143,7 @@ footer {
 	pointer-events:none;
 }
 
+/* form styles */
 form {
 	background-color: #ffa03b;
 	display: inline-block;
@@ -155,12 +152,33 @@ form {
 /* background transitions */
 .orange-white-transition {
 	background-image: linear-gradient(#ffa03b, #faf1e7);
-	height: 60px;
+	height: 50px;
 	width: 100vw;
 }
 
 .white-orange-transition {
 	background-image: linear-gradient(#faf1e7, #ffa03b);
-	height: 60px;
+	height: 20px;
 	width: 100vw;
+}
+
+/* general link styles */
+a:link {
+	text-decoration: none;
+	color: black;
+	font-weight: bold;
+}
+  
+a:visited {
+	text-decoration: none;
+	color: black;
+}
+  
+a:hover {
+	text-decoration: underline;
+	color: #ffa03b;
+}
+  
+a:active {
+	text-decoration: underline;
 }

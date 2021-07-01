@@ -16,17 +16,18 @@
                 <li><a href="/projects/<%=project.slug%>" ><%=project.name%></a> <br>
             <%end%>
         </ul>
-        <hr style="border-top: solid 2px;" />
+        
         
     </div>
     
 
-    <div class="orange-white-transition">
-    </div>
+    
 </div>
 
 <div class="all-reports-header">
+        <hr style="border-top: solid 2px;" />
         <h2>All Reports by Project:</h2>
+        <hr style="border-top: solid 2px;" />
 </div>
 
 <%@user.projects.each do |project| %>
@@ -65,8 +66,7 @@
     
 
 
-<div class="white-orange-transition">
-</div>
+
 
 <div id="edit-user-buttons">
 <br>
@@ -82,3 +82,4 @@
     <br>
     <h3> <%= 'Cannot edit other users details.' if @user != current_user %> <br> </h3>
 </div>
+

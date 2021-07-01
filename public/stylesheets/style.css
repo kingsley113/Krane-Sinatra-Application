@@ -164,14 +164,30 @@ form {
 
 /* general link styles */
 a:link {
+	color: black;
+	/* font-weight: bold; */
+}
+
+header a:link {
 	text-decoration: none;
 	color: black;
 	font-weight: bold;
 }
+
+footer a:link {
+	/* text-decoration: none; */
+	color: white;
+	
+}
   
 a:visited {
-	text-decoration: none;
+	/* text-decoration: none; */
 	color: black;
+}
+
+footer a:visited {
+	text-decoration: none;
+	color: white;
 }
   
 a:hover {
@@ -179,6 +195,14 @@ a:hover {
 	color: #ffa03b;
 }
   
+footer a:hover {
+	text-decoration: underline;
+	color: white;
+	/* font-weight: bold; */
+}
+
 a:active {
 	text-decoration: underline;
 }
+
+

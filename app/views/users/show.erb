@@ -9,19 +9,6 @@
     <b>Position: <%=@user.position%> <br> </b>
     <b>Email: <%=@user.email%> <br> </b>
     <br>
-    <div class="left-justify-text">
-        <h3>All Projects:</h3>
-        <ul>
-            <%@user.projects.each do |project| %>
-                <li><a href="/projects/<%=project.slug%>" ><%=project.name%></a> <br>
-            <%end%>
-        </ul>
-        
-        
-    </div>
-    
-
-    
 </div>
 
 <div class="all-reports-header">
@@ -32,7 +19,7 @@
 
 <%@user.projects.each do |project| %>
     <div class="item-group">
-        <h3><%=project.name%> </h3>
+        <h3><a href="/projects/<%=project.slug%>" ><%=project.name%></a> </h3>
 
         <%project_reports = [] %>
         <% @user.daily_reports.each do |report| %>

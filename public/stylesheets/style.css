@@ -1,3 +1,5 @@
+
+/* TODO: dont forget to re enable cache on chrome after this development is complete!!!!! */
 html,
 
 /* main layout styles */
@@ -5,6 +7,7 @@ body {
 	background-color: #ffa03b;
 	margin: 0px;
 	font-family: Arial, Helvetica, sans-serif;
+	text-align: center;
 }
 
 /* h1 { font-size: 400%;} */
@@ -72,7 +75,7 @@ footer {
 	display: inline-block;
 	
 	vertical-align: top;
-	text-align: center;
+	/* text-align: center; */
 	line-height: 50px;
 	margin-right: 20px;
 	height: 80px;
@@ -88,7 +91,7 @@ footer {
 
 /* home page styles */
 .home-page {
-	text-align: center;
+	/* text-align: center; */
 
 }
 
@@ -105,6 +108,6 @@ footer {
 }
 
 /* general centered text */
-.centered {
+/* .centered {
 	text-align: center;
-}
+} */

@@ -107,7 +107,15 @@ footer {
 	text-align: center;
 }
 
-/* general centered text */
-/* .centered {
-	text-align: center;
-} */
+/* user show page styles */
+.user-page-header {
+	width: 100vw;
+}
+
+.left-justify-text {
+	text-align: left;
+}
+
+.project-group {
+	width: 90%;
+}

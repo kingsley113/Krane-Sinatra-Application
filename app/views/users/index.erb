@@ -1,12 +1,13 @@
 <h1> All Users: </h1>
 
 <%@users.each do |user|%>
-	<h3><%=user.first_name%> <%=user.last_name%></h3>
-	Position: <%=user.position%> <br>
-	Email: <%=user.email%> <br>
-	
-	<a href="/users/<%=user.slug%>" >View User Details</a>
+	<div class="item-group">
+		<h3><%=user.first_name%> <%=user.last_name%></h3>
+		Position: <%=user.position%> <br>
+		Email: <%=user.email%> <br>
+		
+		<a href="/users/<%=user.slug%>" >View User Details</a>
 
-	<hr style="border-top: dotted 1px;" />
-
+		<hr style="border-top: dotted 1px;" />
+	</div>
 <%end%>

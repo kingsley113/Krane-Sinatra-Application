@@ -19,12 +19,18 @@
         <hr style="border-top: solid 2px;" />
         
     </div>
-    <div class="all-reports-header">
-        <h3>All Reports by Project:</h3>
+    
+
+    <div class="orange-white-transition">
     </div>
 </div>
+
+<div class="all-reports-header">
+        <h2>All Reports by Project:</h2>
+</div>
+
 <%@user.projects.each do |project| %>
-    <div class="project-group">
+    <div class="item-group">
         <h3><%=project.name%> </h3>
 
         <%project_reports = [] %>
@@ -59,7 +65,7 @@
     
 
 
-<div class="background-transition">
+<div class="white-orange-transition">
 </div>
 
 <div id="edit-user-buttons">

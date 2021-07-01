@@ -108,11 +108,13 @@ footer {
 }
 
 .all-reports-header {
-	background-image: linear-gradient(#ffa03b, #faf1e7);
-	height: 80px;
+	/* background-image: linear-gradient(#ffa03b, #faf1e7); */
+	/* height: 80px; */
+	width: 100vw;
+	background-color: #faf1e7;
 }
 
-.project-group {
+.item-group {
 	width: 100%;
 	background-color: #faf1e7;
 }
@@ -122,11 +124,7 @@ footer {
 }
 
 /* button styles */
-.background-transition {
-	background-image: linear-gradient(#faf1e7, #ffa03b);
-	height: 80px;
-	width: 100%;
-}
+
 
 .button {
 	background-color: #ffa03b;
@@ -154,3 +152,15 @@ form {
 	display: inline-block;
 }
 
+/* background transitions */
+.orange-white-transition {
+	background-image: linear-gradient(#ffa03b, #faf1e7);
+	height: 60px;
+	width: 100vw;
+}
+
+.white-orange-transition {
+	background-image: linear-gradient(#faf1e7, #ffa03b);
+	height: 60px;
+	width: 100vw;
+}

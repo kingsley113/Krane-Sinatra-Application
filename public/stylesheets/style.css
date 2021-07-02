@@ -152,7 +152,7 @@ footer {
 }
 
 /* new report page styles */
-.new-report-form {
+.new-object-form {
 	width: 90%;
 }
 
@@ -198,18 +198,42 @@ footer {
 	margin-top: 6px;
 	text-align: left;
 	padding-left: 5px;
+	box-sizing: border-box;
 }
 
 .col-85 {
 	float: left;
 	width: 85%;
 	margin-top: 6px;
+	
 }
+
+#button-box {
+	float: right;
+	margin-top: 4px;
+	/* align-items: flex-end; */
+}
+input[type=checkbox] {
+	vertical-align: middle;
+	float: right;
+	height: 15px;
+	width: 15px;
+  }
+
+/* .col-5 {
+	float: left;
+	width: 5%;
+	margin-top: 6px;
+	text-align: right;
+} */
+
+
 
 .row:after {
 	content: "";
 	display: table;
 	clear: both;
+	/* margin: auto; */
 }
 
 #min-height-100 {
@@ -250,6 +274,10 @@ textarea {
 	display: flex;
   }
 
+  label {
+	  padding: 6px 5px;
+	  display: inline-block;
+  }
 
 /* background transitions */
 .orange-white-transition {

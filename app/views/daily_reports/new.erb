@@ -85,11 +85,14 @@
     <% @projects.each do |project|%>
         <div class="row">
             <div class="col-15">
-                <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>" required>
+                <label for="<%=project.id%>"><%=project.name%></label>
             </div>
-            <div class="col-35">
-                <label for="<%=project.id%>"><%=project.name%></label><br>
+            <div class="col-80">
+                <div class="button-box">
+                    <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>" required>
+                </div>
             </div>
+            
         </div>
     <%end%>
     <br>

@@ -49,17 +49,17 @@
     
     <div class="container">
         <% @users.each do |user|%>
-        <div class="row">
-		    <div class="col-20" >
-                <div id="button-box">
-                    <input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" <%= 'checked' if user == current_user%> >
+            <div class="row">
+                <div class="col-20">
+                    <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
+                </div>
+                <div class="col-80" >
+                    <div id="button-box">
+                        <input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" <%= 'checked' if user == current_user%> >
+                    </div>
                 </div>
             </div>
-            <div class="col-80">
-                <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
-            </div>
         <%end%>
-        <br>
     </div>
 
     <hr>

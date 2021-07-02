@@ -209,8 +209,9 @@ footer {
 }
 
 #button-box {
-	float: right;
+	float: left;
 	margin-top: 4px;
+	width: 18px;
 }
 
 .row:after {
@@ -259,6 +260,15 @@ textarea {
 	float: right;
 	height: 15px;
 	width: 15px;
+  }
+
+  input[type=radio] {
+	vertical-align: middle;
+	float: left;
+	height: 15px;
+	width: 15px;
+	margin-top: 8px;
+	filter: hue-rotate(190deg);
   }
 
   label {

@@ -29,6 +29,7 @@ header {
 	width: 100%;
 	flex-shrink: 0;
 	white-space: nowrap;
+	overflow: hidden;
 }
   
 main {
@@ -64,18 +65,32 @@ footer {
 	vertical-align: middle;
 	height: 70px;
 	width: auto;
-	margin-right: 10px;
+	/* margin-right: 10px; */
 }
 
 .skewed-button {
-	background-color: white;
+	background-color: #faf1e7;
 	display: inline-block;
 	
 	vertical-align: top;
 	line-height: 50px;
-	margin-right: 20px;
+	margin-left: 20px;
 	height: 80px;
 	width: 100px;
+
+	transform: skewX(20deg);
+	transform-origin: top right;
+}
+
+.skewed-button-filler {
+	background-color: #faf1e7;
+	display: inline-block;
+	
+	vertical-align: top;
+	line-height: 50px;
+	margin-left: -10px;
+	height: 80px;
+	width: 1000px;
 
 	transform: skewX(20deg);
 	transform-origin: top right;

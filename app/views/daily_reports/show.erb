@@ -6,11 +6,26 @@
 	<% end %>
 
 	<h1>Daily Report for <%=@daily_report.project.name%></h1>
-	<h3><%=@daily_report.work_date%></h3>
-	<b>Submitted by: <%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%></b> <br>
 </div>
 
 <div class="item-group">
+
+	<div class="row">
+		<div class="col-15">
+			<b>Work Date:</b>
+		</div>
+		<div class="col-30">
+			<%=@daily_report.work_date%>
+		</div>
+		<div class="col-15">
+			<b>Submitted by:</b>
+		</div>
+		<div class="col-30">
+			<%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%>
+		</div> 
+		 
+	</div>
+
 	<div class="row">
 		<div class="col-15">
 			<b>Start Time:</b>
@@ -25,8 +40,6 @@
 			<%=@daily_report.shift_end_time.strftime('%I:%M %p')%>
 		</div> 
 	</div>
-
-
 
 	<div class="row">
 		<div class="col-15">
@@ -80,15 +93,17 @@
 </div>
 
 
- 
-<form method="GET" action="/daily_reports/<%=@daily_report.id%>/edit">
-    <input class="button" type="submit" value="Edit Report" id="Edit Report" <%= 'disabled' if @daily_report.user != current_user %> >
-</form>
+<div class="container"> 
+	<form method="GET" action="/daily_reports/<%=@daily_report.id%>/edit">
+		<input class="button" type="submit" value="Edit Report" id="Edit Report" <%= 'disabled' if @daily_report.user != current_user %> >
+	</form>
 
-<form method="POST" action="/daily_reports/<%=@daily_report.id%>">
-        <input type="hidden" id="hidden" name="_method" value="DELETE">
-        <input class="button" type="submit" value="Delete Report" id="Delete Report" <%= 'disabled' if @daily_report.user != current_user %> >
-</form>
-
-<%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %> <br>
+	<form method="POST" action="/daily_reports/<%=@daily_report.id%>">
+			<input type="hidden" id="hidden" name="_method" value="DELETE">
+			<input class="button" type="submit" value="Delete Report" id="Delete Report" <%= 'disabled' if @daily_report.user != current_user %> >
+	</form>
+</div>
+<div class="error-text">
+	<%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %>	
+</div>
 

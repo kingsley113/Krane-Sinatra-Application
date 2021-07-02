@@ -53,6 +53,9 @@ footer {
 	font-size: 14pt;
 }
   
+.container {
+	width: 100%;
+}
 /* layout header styles */
 .navigation-bar {
 	width: 100%;
@@ -304,4 +307,8 @@ a:active {
 	text-decoration: underline;
 }
 
+.error-text {
+	color: red;
+	padding-top: 5px;
+}
 

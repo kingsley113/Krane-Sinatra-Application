@@ -14,6 +14,9 @@ class UsersController < ApplicationController
     @projects = Project.all
     
     # TODO: add validation to only show signup for new users
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    end
 
     erb :'users/signup'
   end
@@ -26,8 +29,10 @@ class UsersController < ApplicationController
   end
 
   post '/users' do
-    # binding.pry
-    # TODO: add verification all entries are good and unique
+    if User.find_by(username: params[:new_user][:username]) 
+      session[:message] = "Username is already taken, please try another"
+      redirect "/users/signup"
+    end
     @user = User.create(params[:new_user].except("project_ids"))
 
     params[:new_user][:project_ids].each do |project|

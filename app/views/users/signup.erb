@@ -40,3 +40,11 @@
     <hr>
     <input type="submit" name="submit" id="submit" value="Create New User">
 </form>
+
+<div class="container error-text"> 
+    <%if session.include?(:message)%>
+            <%= session[:message]%>
+            <% session.delete(:message) %>
+            <br>
+    <% end %>
+</div>

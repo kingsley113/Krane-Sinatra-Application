@@ -9,27 +9,31 @@
 		<div class="col-30">
 			<%=@project.address%>
 		</div>
-		<div class="col-20">
-			<b>Project Description:</b>
-		</div>
-		<div class="col-30">
-			<%=@project.description%>
-		</div> 
+		 
 	</div>
 
 	<div class="row">
 		<div class="col-20">
-			<b>Scheduled Start Date:</b>
+			<b>Start Date:</b>
 		</div>
 		<div class="col-30">
 			<%=@project.start_date%>
 		</div>
 		<div class="col-20">
-			<b>Scheduled Finish Date:</b>
+			<b>Finish Date:</b>
 		</div>
 		<div class="col-30">
 			<%=@project.finish_date%>
 		</div> 
+	</div>
+
+	<div class="row" id="min-height-60">
+		<div class="col-20">
+			<b>Project Description:</b>
+		</div>
+		<div class="col-80">
+			<%=@project.description%>
+		</div>
 	</div>
 
 <hr style="border-top: solid 2px;" />
@@ -59,6 +63,6 @@
 <%end%>
 
 <form method="GET" action="/projects/<%=@project.slug%>/edit">
-    <input class="button" type="submit" value="Edit Project" id="Edit Project" >
+    <input class="button" type="submit" value="Save Project" id="Edit Project" >
 </form>
 

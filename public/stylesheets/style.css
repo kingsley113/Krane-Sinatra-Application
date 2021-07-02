@@ -93,7 +93,7 @@ footer {
 	line-height: 50px;
 	margin-left: -10px;
 	height: 80px;
-	width: 1000px;
+	width: calc(100vw - 930px);
 
 	transform: skewX(20deg);
 	transform-origin: top right;
@@ -134,7 +134,7 @@ footer {
 	background-color: #ffa03b;
 	color: white;
 	border: 0px solid white; 
-	transition-duration: 0.4s;
+	transition-duration: 0.25s;
 	width: 200px;
 	height: 40px;
 	font-weight: bold;
@@ -208,12 +208,6 @@ footer {
 	
 }
 
-#button-box {
-	float: left;
-	margin-top: 4px;
-	width: 18px;
-}
-
 .row:after {
 	content: "";
 	display: table;
@@ -253,13 +247,15 @@ textarea {
 	resize: none;
 	margin-left: 5px;
 	display: flex;
+	font-family: inherit;
   }
 
   input[type=checkbox] {
 	vertical-align: middle;
-	float: right;
+	float: left;
 	height: 15px;
 	width: 15px;
+	margin-top: 8px;
   }
 
   input[type=radio] {
@@ -292,6 +288,7 @@ textarea {
 /* link styles */
 a:link {
 	color: black;
+	transition-duration: 0.25s;
 }
 
 header a:link {

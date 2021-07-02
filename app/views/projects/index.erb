@@ -10,7 +10,7 @@
 			<%@projects.each do |project|%>
 				<h3><%=project.name%> </h3>
 				Site Address: <%=project.address%> <br>
-				Scheduled Duration: <%=project.scheduled_duration%> <br>
+				Scheduled Duration: <%=project.description%> <br>
 				
 
 				<a href="/projects/<%=project.slug%>" >View Project Details</a>

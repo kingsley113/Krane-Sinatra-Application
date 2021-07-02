@@ -215,6 +215,10 @@ footer {
 	clear: both;
 }
 
+#right-align {
+	text-align: right;
+}
+
 #min-height-100 {
 	min-height: 100px;
 }

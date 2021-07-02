@@ -149,6 +149,21 @@ footer {
 	float: left;
 	width: 15%;
 	margin-top: 6px;
+	text-align: right;
+}
+
+.col-35 {
+	float: left;
+	width: 35%;
+	margin-top: 6px;
+	text-align: left;
+}
+
+.col-50 {
+	float: left;
+	width: 50%;
+	margin-top: 6px;
+	text-align: ;
 }
 
 .col-85 {
@@ -161,18 +176,6 @@ footer {
 	content: "";
 	display: table;
 	clear: both;
-  }
-
-.col-20 {
-	float: left;
-	width: 20%;
-	margin-top: 6px;
-	text-align: right;
-}
-.col-30 {
-	float: left;
-	width: 30%;
-	margin-top: 6px;
 }
 
 form {
@@ -183,18 +186,26 @@ form {
 input {
 	width: 100%;
 	margin-left: 5px;
+	padding: 4px 5px;
+	box-sizing: border-box;
+	border: 2px solid #e4dbd0;
+	border-radius: 4px;
+	background-color: #f8f8f8;
 }
 
 textarea {
 	width: 100%;
 	/* height: 150px; */
-	padding: 12px 20px;
+	padding: 12px 10px;
 	box-sizing: border-box;
-	border: 2px solid #ccc;
+	border: 2px solid #e4dbd0;
 	border-radius: 4px;
 	background-color: #f8f8f8;
 	resize: none;
+	margin-left: 5px;
+	display: flex;
   }
+
 
 /* background transitions */
 .orange-white-transition {

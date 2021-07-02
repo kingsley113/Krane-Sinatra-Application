@@ -1,17 +1,47 @@
-<h1>Project Details: <%=@project.name%> </h1>
-Site Address: <%=@project.address%> <br>
-Scheduled Duration: <%=@project.scheduled_duration%> <br>
-Scheduled Start Date: <%=@project.start_date%> <br>
-Scheduled Finish Date: <%=@project.finish_date%> <br>
+<div class="page-header">
+	<h1>Project Details: <%=@project.name%> </h1>
+</div>
+<div class="item-group">
+	<div class="row">
+		<div class="col-20">
+			<b>Site Address:</b>
+		</div>
+		<div class="col-30">
+			<%=@project.address%>
+		</div>
+		<div class="col-20">
+			<b>Scheduled Duration:</b>
+		</div>
+		<div class="col-30">
+			<%=@project.scheduled_duration%>
+		</div> 
+	</div>
+
+	<div class="row">
+		<div class="col-20">
+			<b>Scheduled Start Date:</b>
+		</div>
+		<div class="col-30">
+			<%=@project.start_date%>
+		</div>
+		<div class="col-20">
+			<b>Scheduled Finish Date:</b>
+		</div>
+		<div class="col-30">
+			<%=@project.finish_date%>
+		</div> 
+	</div>
 
 <hr style="border-top: solid 2px;" />
 
 <h3>Users on Project</h3>
-<ul>
-<%@project.users.each do |user|%>
-	<li> <a href="/users/<%=user.slug%>" ><%=user.first_name%> <%=user.last_name%></a>
-<%end%>
-</ul>
+<div class="container">
+	<ul>
+	<%@project.users.each do |user|%>
+		<li> <a href="/users/<%=user.slug%>" ><%=user.first_name%> <%=user.last_name%></a>
+	<%end%>
+	</ul>
+</div>
 
 <hr style="border-top: solid 2px;" />
 
@@ -20,14 +50,15 @@ Scheduled Finish Date: <%=@project.finish_date%> <br>
 <%sorted_reports_by_date = @project.daily_reports.sort_by{|k| k[:work_date]} %>
 
 <%sorted_reports_by_date.each do |report|%>
-	<a href="/daily_reports/<%=report.id%>" ><%=report.work_date%> </a>
-	Submitted by: <%=report.user.first_name%> <%=report.user.last_name%> <br>
-	Work Completed: <%=report.work_completed%>
-	<hr style="border-top: dotted 1px;" />
+	<div class="report-summary-item">
+		<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b> </a><br>
+		<b>Submitted by:</b> <%=report.user.first_name%> <%=report.user.last_name%> <br>
+		<b>Work Completed:</b> <%=report.work_completed%>
+		<hr>
+	</div>
 <%end%>
 
-
 <form method="GET" action="/projects/<%=@project.slug%>/edit">
-    <input type="submit" value="Edit Project" id="Edit Project" >
+    <input class="button" type="submit" value="Edit Project" id="Edit Project" >
 </form>
 

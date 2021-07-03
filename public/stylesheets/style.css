@@ -158,10 +158,7 @@ footer {
 }
 
 .container img:hover {
-	/* width: 400px; */
-	/* height: auto; */
 	filter: invert(58%) sepia(84%) saturate(446%) hue-rotate(340deg) brightness(106%) contrast(101%);
-	/* filter: ; */
 }
 
 /* new report page styles */

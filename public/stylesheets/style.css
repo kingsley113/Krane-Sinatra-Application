@@ -185,6 +185,8 @@ footer {
 	width: 35%;
 	margin-top: 6px;
 	text-align: left;
+	padding-left: 5px;
+	box-sizing: border-box;
 }
 
 .col-50 {
@@ -253,29 +255,30 @@ textarea {
 	margin-left: 5px;
 	display: flex;
 	font-family: inherit;
-  }
+}
 
-  input[type=checkbox] {
-	vertical-align: middle;
-	float: left;
-	height: 15px;
-	width: 15px;
-	margin-top: 8px;
-  }
-
-  input[type=radio] {
+input[type=checkbox] {
 	vertical-align: middle;
 	float: left;
 	height: 15px;
 	width: 15px;
 	margin-top: 8px;
 	filter: hue-rotate(190deg);
-  }
+}
 
-  label {
+input[type=radio] {
+	vertical-align: middle;
+	float: left;
+	height: 15px;
+	width: 15px;
+	margin-top: 8px;
+	filter: hue-rotate(190deg);
+}
+
+label {
 	  padding: 6px 5px;
 	  display: inline-block;
-  }
+}
 
 /* background transitions */
 .orange-white-transition {

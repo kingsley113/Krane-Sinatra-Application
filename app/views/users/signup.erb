@@ -18,7 +18,6 @@
         </div>
     </div>
 
-    <br>
     <div class="row">
         <div class="col-20">
             <label for="username">Username:</label>
@@ -34,7 +33,6 @@
         </div>
     </div>
 
-    <br>
     <div class="row">
         <div class="col-20">
             <label for="email">Email:</label>
@@ -43,28 +41,33 @@
             <input type="email" id="email" name="new_user[email]" required>
         </div>
         <div class="col-20">
-            <label for="position">Positon:</label>
+            <label for="position">Position:</label>
         </div>
         <div class="col-30">
             <input type="text" id="position" name="new_user[position]" required>
         </div>
     </div>
 
-    <br>
-
     <hr>
-    <br>
-    Current Projects:
-    <br>
+
+    <h3>Assign User to Current Projects:</h3>
+
     <% @projects.each do |project|%>
-        <input type="checkbox" id="<%=project.id%>" name="new_user[project_ids][]" value="<%=project.id%>">
-        <label for="<%=project.id%>"><%=project.name%></label><br>
+        <div class="row">
+            <div class="col-20">
+                <label for="<%=project.id%>"><%=project.name%></label><br>
+            </div>
+            <div class="col-20">
+                <input type="checkbox" id="<%=project.id%>" name="new_user[project_ids][]" value="<%=project.id%>">
+            </div>
+        </div>
+        
     <%end%>
     <br>
    
 
     <hr>
-    <input type="submit" name="submit" id="submit" value="Create New User">
+    <input class="button" type="submit" name="submit" id="submit" value="Create New User">
 </form>
 
 <div class="container error-text"> 

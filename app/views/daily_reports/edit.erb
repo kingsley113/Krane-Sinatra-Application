@@ -8,7 +8,7 @@
 <% end %>
 </div>
 
-<form class="new-report-form" method="post" action="/daily_reports/<%=@daily_report.id%>" name="daily_report">
+<form class="new-object-form" method="post" action="/daily_reports/<%=@daily_report.id%>" name="daily_report">
 <input type="hidden" id="hidden" name="_method" value="patch"> 
 
     <div class="row">
@@ -86,18 +86,19 @@
     <% @projects.each do |project|%>
         <div class="row">
             <div class="col-15">
-                <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>" <%='checked' if @daily_report.project == project %> required>
-            </div>
-            <div class="col-35">
                 <label for="<%=project.id%>"><%=project.name%></label><br>
             </div>
+            <div class="col-80">
+                <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>" <%='checked' if @daily_report.project == project %> required>
+            </div>
+            
         </div>
     <%end%>
     <br>
 
     <hr>
     
-    <input class="button" type="submit" name="submit" id="submit" value="Submit Daily Report">
+    <input class="button" type="submit" name="submit" id="submit" value="Update Daily Report">
         
     <input type="hidden" id="hidden" name="daily_report[user_id]" value="<%=@user.id%>"> 
 </form>

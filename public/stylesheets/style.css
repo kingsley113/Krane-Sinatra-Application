@@ -152,26 +152,9 @@ footer {
 	pointer-events:none;
 }
 
-.big-button {
-	background-color: #ffa03b;
-	color: white;
-	border: 0px solid white; 
-	transition-duration: 0.25s;
-	width: 500px;
-	height: 500px;
-	font-weight: bold;
-	font-size: 20pt;
-}
-
-.big-button:hover {
-	background-color: white; 
-	color: black;
-}
-
 .container img{
 	width: 400px;
 	height: auto;
-	/* transition-duration: 0.25s; */
 }
 
 .container img:hover {

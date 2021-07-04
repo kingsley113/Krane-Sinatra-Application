@@ -1,5 +1,4 @@
 
-/* TODO: dont forget to re enable cache on chrome after this development is complete!!!!! */
 html,
 
 /* main layout styles */
@@ -153,7 +152,7 @@ footer {
 }
 
 .container img{
-	width: 400px;
+	width: 300px;
 	height: auto;
 }
 

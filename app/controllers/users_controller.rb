@@ -4,28 +4,22 @@ class UsersController < ApplicationController
   enable :sessions
   use Rack::Flash
 
+  # Show Users index page
   get '/users' do
     redirect_if_not_logged_in
     @users = User.all 
     erb :'users/index'
   end
 
+  # Create new user
   get '/users/signup' do
     @projects = Project.all
     
-    # TODO: add validation to only show signup for new users
     if logged_in?
       redirect "/users/#{current_user.slug}"
     end
 
     erb :'users/signup'
-  end
-
-  get '/users/:slug' do
-    redirect_if_not_logged_in
-    @user = User.find_by(slug: params[:slug])
-
-    erb :'users/show'
   end
 
   post '/users' do
@@ -42,36 +36,22 @@ class UsersController < ApplicationController
     redirect "/users/#{@user.slug}"
   end
 
+  # Show single user details page
+  get '/users/:slug' do
+    redirect_if_not_logged_in
+    @user = User.find_by(slug: params[:slug])
+
+    erb :'users/show'
+  end
+
   
-  get '/login' do
-    if logged_in?
-      redirect "/users/#{current_user.slug}"
-    end
 
-    erb :'users/login'
-  end
-
-  post '/login' do
-    @user = User.find_by(username: params[:username])
-
-    if @user && @user.authenticate(params[:password]) 
-      session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
-    end
-
-    erb :'/users/failure'
-  end
-
+  # Edit User
   get '/users/:slug/edit' do
     @user = User.find_by(slug: params[:slug])
     @projects = Project.all
 
     erb :'users/edit'
-  end
-
-  get '/logout' do
-    session.clear
-    redirect '/login'
   end
 
   patch '/users/:slug' do
@@ -96,7 +76,6 @@ class UsersController < ApplicationController
       @user.password = params[:edited_user][:password]
 
       @user.save
-
     else
       session[:message] = "Incorrect Password, try again."
       redirect "/users/#{@user.slug}/edit"
@@ -106,12 +85,38 @@ class UsersController < ApplicationController
     redirect "/users/#{@user.slug}"
   end
 
-   
+  # Delete User
   delete "/users/:slug" do
     @user = User.find_by(slug: params[:slug])
 
     if @user = current_user
       @user.delete
     end
+  end
+
+  # User Login page
+  get '/login' do
+    if logged_in?
+      redirect "/users/#{current_user.slug}"
+    end
+
+    erb :'users/login'
+  end
+
+  post '/login' do
+    @user = User.find_by(username: params[:username])
+
+    if @user && @user.authenticate(params[:password]) 
+      session[:user_id] = @user.id
+      redirect "/users/#{@user.slug}"
+    end
+
+    erb :'/users/failure'
+  end
+
+  # User Logout
+  get '/logout' do
+    session.clear
+    redirect '/login'
   end
 end

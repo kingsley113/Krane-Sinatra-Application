@@ -1,105 +1,103 @@
 <div>
-    <h2>Edit Daily Report:</h2>
-    <br>
-    <%if session.include?(:message)%>
-            <%= session[:message]%>
-            <% session.delete(:message) %>
-            <br>
-<% end %>
+	<h2>Edit Daily Report:</h2>
+	<br>
+	<%if session.include?(:message)%>
+		<%= session[:message]%>
+		<% session.delete(:message) %>
+		<br>
+	<% end %>
 </div>
 
 <form class="new-object-form" method="post" action="/daily_reports/<%=@daily_report.id%>" name="daily_report">
-<input type="hidden" id="hidden" name="_method" value="patch"> 
+	<input type="hidden" id="hidden" name="_method" value="patch"> 
 
-    <div class="row">
-        <div class="col-15">
-            <label for="work_date">Date: </label>
-        </div>
-        <div class="col-35">
-            <input type="date" id="work_date" name="daily_report[work_date]" value="<%=@daily_report.work_date%>" required>
-        </div>
-        <div class="col-15">
-            <label for="no_of_workers_on_site">Workers Onsite: </label>
-        </div>
-        <div class="col-35">
-            <input type="number" id="no_of_workers_on_site" name="daily_report[no_of_workers_onsite]" placeholder="# of workers on site" value="<%=@daily_report.no_of_workers_onsite%>" required>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-15">
+			<label for="work_date">Date: </label>
+		</div>
+		<div class="col-35">
+			<input type="date" id="work_date" name="daily_report[work_date]" value="<%=@daily_report.work_date%>" required>
+		</div>
+		<div class="col-15">
+			<label for="no_of_workers_on_site">Workers Onsite: </label>
+		</div>
+		<div class="col-35">
+			<input type="number" id="no_of_workers_on_site" name="daily_report[no_of_workers_onsite]" placeholder="# of workers on site" value="<%=@daily_report.no_of_workers_onsite%>" required>
+		</div>
+	</div>
 
-    <div class="row">
-        <div class="col-15">
-            <label for="shift_start_time">Shift Start Time: </label>
-            </div>
-        <div class="col-35">
-            <input type="time" id=shift_start_time" name="daily_report[shift_start_time]" value="<%=@daily_report.shift_start_time.strftime('%H:%M')%>" required> 
-        </div>
-        <div class="col-15">
-            <label for="shift_end_time">Shift End Time: </label>
-        </div>
-        <div class="col-35">
-            <input type="time" id=shift_end_time" name="daily_report[shift_end_time]" value="<%=@daily_report.shift_end_time.strftime('%H:%M')%>" required>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-15">
-            <label for="weather">Weather:</label>
-        </div>
-        <div class="col-35">
-            <input type="text" id="weather" name="daily_report[weather]" placeholder="Temp and sky conditions." value="<%=@daily_report.weather%>" required> 
-        </div>
-    </div>
-    
-    <hr>
-    
-    <div class="row">
-        <div class="col-15">
-            <label for="work_completed">Work Completed:</label>
-        </div>
-        <div class="col-85">
-            <textarea id="work_completed" name="daily_report[work_completed]" rows="6" placeholder="Describe the work completed on site today." required><%=@daily_report.work_completed%></textarea>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-15">
+			<label for="shift_start_time">Shift Start Time: </label>
+			</div>
+		<div class="col-35">
+			<input type="time" id=shift_start_time" name="daily_report[shift_start_time]" value="<%=@daily_report.shift_start_time.strftime('%H:%M')%>" required> 
+		</div>
+		<div class="col-15">
+			<label for="shift_end_time">Shift End Time: </label>
+		</div>
+		<div class="col-35">
+			<input type="time" id=shift_end_time" name="daily_report[shift_end_time]" value="<%=@daily_report.shift_end_time.strftime('%H:%M')%>" required>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-15">
+			<label for="weather">Weather:</label>
+		</div>
+		<div class="col-35">
+			<input type="text" id="weather" name="daily_report[weather]" placeholder="Temp and sky conditions." value="<%=@daily_report.weather%>" required> 
+		</div>
+	</div>
+	
+	<hr>
+	
+	<div class="row">
+		<div class="col-15">
+			<label for="work_completed">Work Completed:</label>
+		</div>
+		<div class="col-85">
+			<textarea id="work_completed" name="daily_report[work_completed]" rows="6" placeholder="Describe the work completed on site today." required><%=@daily_report.work_completed%></textarea>
+		</div>
+	</div>
 
-    <div class="row">
-        <div class="col-15">
-            <label for="deliveries">Deliveries:</label>
-        </div>
-        <div class="col-85">
-            <textarea id="deliveries" name="daily_report[deliveries]" rows="3" placeholder="What deliveries were made to the site today?"><%=@daily_report.deliveries%></textarea>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-15">
+			<label for="deliveries">Deliveries:</label>
+		</div>
+		<div class="col-85">
+			<textarea id="deliveries" name="daily_report[deliveries]" rows="3" placeholder="What deliveries were made to the site today?"><%=@daily_report.deliveries%></textarea>
+		</div>
+	</div>
 
-    <div class="row">
-        <div class="col-15">
-            <label for="inspections">Inspections:</label>
-        </div>
-        <div class="col-85">
-            <textarea id="inspections" name="daily_report[inspections]" rows="3" placeholder="Did any inspections take place on site today?"><%=@daily_report.inspections%></textarea>
-        </div>
-    </div>
+	<div class="row">
+		<div class="col-15">
+			<label for="inspections">Inspections:</label>
+		</div>
+		<div class="col-85">
+			<textarea id="inspections" name="daily_report[inspections]" rows="3" placeholder="Did any inspections take place on site today?"><%=@daily_report.inspections%></textarea>
+		</div>
+	</div>
 
-    <hr>
+	<hr>
 
-    <h3>Select Project:</h3>
+	<h3>Select Project:</h3>
 
-    <% @projects.each do |project|%>
-        <div class="row">
-            <div class="col-15">
-                <label for="<%=project.id%>"><%=project.name%></label><br>
-            </div>
-            <div class="col-80">
-                <input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>" <%='checked' if @daily_report.project == project %> required>
-            </div>
-            
-        </div>
-    <%end%>
-    <br>
+	<% @projects.each do |project|%>
+		<div class="row">
+			<div class="col-15">
+				<label for="<%=project.id%>"><%=project.name%></label><br>
+			</div>
+			<div class="col-80">
+				<input type="radio" id="<%=project.id%>" name="daily_report[project_id]" value="<%=project.id%>" <%='checked' if @daily_report.project == project %> required>
+			</div>
+		</div>
+	<%end%>
+	<br>
 
-    <hr>
-    
-    <input class="button" type="submit" name="submit" id="submit" value="Update Daily Report">
-        
-    <input type="hidden" id="hidden" name="daily_report[user_id]" value="<%=@user.id%>"> 
+	<hr>
+
+	<input type="hidden" id="hidden" name="daily_report[user_id]" value="<%=@user.id%>"> 
+	<input class="button" type="submit" name="submit" id="submit" value="Update Daily Report">
 </form>
 

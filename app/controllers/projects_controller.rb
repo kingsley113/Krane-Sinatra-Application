@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
 	enable :sessions
 	use Rack::Flash
 
+	# Show Projects Index Page
 	get '/projects' do
 		redirect_if_not_logged_in
 		@projects = Project.all
@@ -11,18 +12,12 @@ class ProjectsController < ApplicationController
 		erb :'projects/index'
 	end
 
+	# Create new Project
 	get '/projects/new' do
 		redirect_if_not_logged_in
 		@users = User.all
 		
 		erb :'projects/new'
-	end
-
-	get '/projects/:slug' do
-		redirect_if_not_logged_in
-		@project = Project.find_by(slug: params[:slug])
-		
-		erb :'projects/show'
 	end
 
 	post '/projects' do
@@ -37,6 +32,15 @@ class ProjectsController < ApplicationController
 		redirect "/projects/#{@project.slug}"
 	end
 
+	# Show project detail page
+	get '/projects/:slug' do
+		redirect_if_not_logged_in
+		@project = Project.find_by(slug: params[:slug])
+		
+		erb :'projects/show'
+	end
+
+	# Update a project
 	get '/projects/:slug/edit' do
 		redirect_if_not_logged_in
 		@project = Project.find_by(slug: params[:slug])
@@ -63,6 +67,7 @@ class ProjectsController < ApplicationController
 		redirect "/projects/#{@project.slug}"
 	end
   
+	# Delete a project
 	delete '/project/:slug' do
 		redirect_if_not_logged_in
 		@project = Project.find_by(slug: params[:slug])

@@ -10,13 +10,12 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "constructioniscool"
   end
 
-  use Rack::Flash
-  # helpers Sinatra::RedirectWithFlash
-
-  get '/' do
+  # Index Page 
+  get '/' do 
       erb :index
   end
 
+  # Helper methods
   helpers do
     def redirect_if_not_logged_in
       if !logged_in?
@@ -33,5 +32,4 @@ class ApplicationController < Sinatra::Base
       User.find(session[:user_id])
     end
   end
-
 end

@@ -2,8 +2,8 @@ require './config/environment'
 
 class DailyReportsController < ApplicationController
 	enable :sessions
-	use Rack::Flash
 
+	# Show Daily Reports Index
 	get '/daily_reports' do
 		redirect_if_not_logged_in
 		@daily_reports = DailyReport.all
@@ -12,6 +12,7 @@ class DailyReportsController < ApplicationController
 		erb :'daily_reports/index'
 	end
 
+	# Create Daily Report
 	get '/daily_reports/new' do
 		redirect_if_not_logged_in
 
@@ -19,13 +20,6 @@ class DailyReportsController < ApplicationController
 		@projects = Project.all
 
 		erb :'daily_reports/new'
-	end
-
-	get '/daily_reports/:id' do
-		redirect_if_not_logged_in
-		@daily_report = DailyReport.find(params[:id])
-
-		erb :'daily_reports/show'
 	end
 
 	post '/daily_reports' do
@@ -39,6 +33,15 @@ class DailyReportsController < ApplicationController
 		end
 	end
 
+	# Show single Daily Report
+	get '/daily_reports/:id' do
+		redirect_if_not_logged_in
+		@daily_report = DailyReport.find(params[:id])
+
+		erb :'daily_reports/show'
+	end
+
+	# Update Daily Report
 	get '/daily_reports/:id/edit' do
 		redirect_if_not_logged_in
 		@daily_report = DailyReport.find(params[:id])
@@ -54,10 +57,6 @@ class DailyReportsController < ApplicationController
 		@daily_report = DailyReport.find(params[:id])
 
 		@daily_report.update(params[:daily_report])
-		# params[:daily_report].each do |attribute, value|
-		# 	@daily_report[:"#{attribute}"] = value
-		# end
-		# @daily_report.save
 		if @daily_report.save
 			session[:message] = "Report edited successfully."
 			redirect "/daily_reports/#{@daily_report.id}"
@@ -65,10 +64,9 @@ class DailyReportsController < ApplicationController
 			session[:message] = "Please fill out all required fields."
 			redirect "/daily_reports/#{@daily_report.id}/edit"
 		end
-
-		# redirect "/daily_reports/#{@daily_report.id}"
 	end
 
+	# Delete Daily Report
 	delete '/daily_reports/:id' do
 		@daily_report = DailyReport.find(params[:id])
 		if @daily_report.user = current_user

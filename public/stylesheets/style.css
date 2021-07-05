@@ -56,7 +56,8 @@ footer {
 .container {
 	width: 100%;
 }
-/* layout header styles */
+
+/* layout header & nav bar styles */
 .navigation-bar {
 	width: 100%;
 	height: 80px;
@@ -68,7 +69,19 @@ footer {
 	vertical-align: middle;
 	height: 70px;
 	width: auto;
-	/* margin-right: 10px; */
+}
+
+/* background transitions */
+.orange-white-transition {
+	background-image: linear-gradient(#ffa03b, #faf1e7);
+	height: 50px;
+	width: 100vw;
+}
+
+.white-orange-transition {
+	background-image: linear-gradient(#faf1e7, #ffa03b);
+	height: 20px;
+	width: 100vw;
 }
 
 .skewed-button {
@@ -85,6 +98,10 @@ footer {
 	transform-origin: top right;
 }
 
+.skewed-button p {
+	transform: skewX(-20deg);
+}
+
 .skewed-button-filler {
 	background-color: #faf1e7;
 	display: inline-block;
@@ -99,35 +116,10 @@ footer {
 	transform-origin: top right;
 }
 
-.skewed-button p {
-	transform: skewX(-20deg);
-}
-
-/* home page styles */
-.super-header {
-	font-size: 400%;
-}
-
-/* login page styles */
-.login-page {
-	width: 100%;
-	height: 20%;
-	margin: auto;
-	text-align: center;
-}
-
 .page-header {
 	width: 90%;
 }
 
-.item-group {
-	width: 90%;
-	background-color: #faf1e7;
-}
-
-.report-summary-item {
-	text-align: left;
-}
 
 /* button styles */
 .button {
@@ -160,7 +152,31 @@ footer {
 	filter: invert(58%) sepia(84%) saturate(446%) hue-rotate(340deg) brightness(106%) contrast(101%);
 }
 
-/* new report page styles */
+
+/* home page styles */
+.super-header {
+	font-size: 400%;
+}
+
+
+/* login page styles */
+.login-page {
+	width: 100%;
+	height: 20%;
+	margin: auto;
+	text-align: center;
+}
+
+/* form and display page styles */
+.item-group {
+	width: 90%;
+	background-color: #faf1e7;
+}
+
+.report-summary-item {
+	text-align: left;
+}
+
 .new-object-form {
 	width: 90%;
 }
@@ -288,18 +304,6 @@ label {
 	  display: inline-block;
 }
 
-/* background transitions */
-.orange-white-transition {
-	background-image: linear-gradient(#ffa03b, #faf1e7);
-	height: 50px;
-	width: 100vw;
-}
-
-.white-orange-transition {
-	background-image: linear-gradient(#faf1e7, #ffa03b);
-	height: 20px;
-	width: 100vw;
-}
 
 /* link styles */
 a:link {
@@ -341,11 +345,14 @@ a:active {
 	text-decoration: underline;
 }
 
+/* error text style */
 .error-text {
 	color: red;
 	padding-top: 5px;
 }
 
+
+/* list styles */
 ul {
 	text-align: left;
 }

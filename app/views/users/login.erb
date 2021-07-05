@@ -1,43 +1,43 @@
 
 <div class="login-page">
-    <br>
-    <br>
-    <div class="container error-text">
-        <%if session.include?(:message)%>
-            <%= session[:message]%>
-            <% session.delete(:message) %>
-        <% end %>
-    </div>
+	<br>
+	<br>
+	<div class="container error-text">
+		<%if session.include?(:message)%>
+			<%= session[:message]%>
+			<% session.delete(:message) %>
+		<% end %>
+	</div>
 
-    <form class="new-object-form" method="post" action="/login" name="login">
-        <div class="row">
-            <div class="col-35" id="right-align">
-                <label for="username">Username:</label>
-            </div>
-            <div class="col-30">
-                <input type="text" id="username" name="username" >
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-35" id="right-align">
-                <label for="password">Password:</label>
-            </div>
-            <div class="col-30">
-                <input type="password" id="password" name="password" >
-            </div>
-        </div>
-        <br>
+	<form class="new-object-form" method="post" action="/login" name="login">
+		<div class="row">
+			<div class="col-35" id="right-align">
+				<label for="username">Username:</label>
+			</div>
+			<div class="col-30">
+				<input type="text" id="username" name="username" >
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-35" id="right-align">
+				<label for="password">Password:</label>
+			</div>
+			<div class="col-30">
+				<input type="password" id="password" name="password" >
+			</div>
+		</div>
+		<br>
 
-        <input class="button" type="submit" name="submit" id="submit" value="Login">
-    </form>
+		<input class="button" type="submit" name="submit" id="submit" value="Login">
+	</form>
 
-    <br>
-    --or--
-    <br>
-        
-    <form method="GET" action="/users/signup" >
-        <input class="button" type="submit" value="Create an Account" id="Create User">
-    </form>
-    
+	<br>
+	--or--
+	<br>
+			
+	<form method="GET" action="/users/signup" >
+		<input class="button" type="submit" value="Create an Account" id="Create User">
+	</form>
+	
 </div>
     

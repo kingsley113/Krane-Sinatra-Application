@@ -48,20 +48,18 @@
     <h3>Current Users:</h3>
     
     <div class="container">
-        <% @users.each do |user|%>
-            <div class="row">
-                <div class="col-20">
-                    <label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
-                </div>
-                <div class="col-80" >
-                    
-                        <input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" <%= 'checked' if user == current_user%> >
-                    
-                </div>
-            </div>
-        <%end%>
+			<% @users.each do |user|%>
+				<div class="row">
+					<div class="col-20">
+						<label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
+					</div>
+					<div class="col-80" >	
+						<input type="checkbox" id="<%=user.id%>" name="new_project[user_ids][]" value="<%=user.id%>" <%= 'checked' if user == current_user%> >
+					</div>
+				</div>
+			<%end%>
     </div>
 
-    <hr>
-    <input class="button" type="submit" name="submit" id="submit" value="Create New Project">
+  <hr>
+  <input class="button" type="submit" name="submit" id="submit" value="Create New Project">
 </form>

@@ -13,5 +13,4 @@ class DailyReport < ActiveRecord::Base
     :project_id,
     :user_id,
     presence: true
-
 end

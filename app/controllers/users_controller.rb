@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   # Create new user
   get '/users/signup' do
     @projects = Project.all
-    
+
     if logged_in?
       redirect "/users/#{current_user.slug}"
     end
@@ -28,12 +28,13 @@ class UsersController < ApplicationController
       redirect "/users/signup"
     end
     @user = User.create(params[:new_user].except("project_ids"))
+    session[:user_id] = @user.id
 
     params[:new_user][:project_ids].each do |project|
       @user.projects << Project.find(project)
     end
 
-    redirect "/users/#{@user.slug}"
+    redirect "/"
   end
 
   # Show single user details page
@@ -89,7 +90,12 @@ class UsersController < ApplicationController
 
     if @user = current_user
       @user.delete
+      session.clear
+      redirect "/login"
     end
+    
+
+    # redirect "/users"
   end
 
   # User Login page

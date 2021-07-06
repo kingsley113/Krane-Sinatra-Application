@@ -44,8 +44,6 @@ class UsersController < ApplicationController
     erb :'users/show'
   end
 
-  
-
   # Edit User
   get '/users/:slug/edit' do
     @user = User.find_by(slug: params[:slug])
@@ -108,7 +106,7 @@ class UsersController < ApplicationController
 
     if @user && @user.authenticate(params[:password]) 
       session[:user_id] = @user.id
-      redirect "/users/#{@user.slug}"
+      redirect "/"
     end
 
     erb :'/users/failure'

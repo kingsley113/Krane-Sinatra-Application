@@ -1,91 +1,96 @@
-<div class="page-header">
-	<h1>Project Details: <%=@project.name%> </h1>
-</div>
+<head>
+    <title><%=@project.name%> Details</title>
+</head>
 
-<div class="item-group">
-	<div class="row">
-		<div class="col-20">
-			<b>Site Address:</b>
-		</div>
-		<div class="col-30">
-			<%=@project.address%>
-		</div>
+<body>
+	<div class="page-header">
+		<h1>Project Details: <%=@project.name%> </h1>
 	</div>
 
-	<div class="row">
-		<div class="col-20">
-			<b>Start Date:</b>
-		</div>
-		<div class="col-30">
-			<%=@project.start_date%>
-		</div>
-		<div class="col-20">
-			<b>Finish Date:</b>
-		</div>
-		<div class="col-30">
-			<%=@project.finish_date%>
-		</div> 
-	</div>
-
-	<div class="row" id="min-height-60">
-		<div class="col-20">
-			<b>Project Description:</b>
-		</div>
-		<div class="col-80">
-			<%=@project.description%>
-		</div>
-	</div>
-
-<hr style="border-top: solid 2px;" />
-
-<h3>Users on Project</h3>
-<div class="container">
-	<ul>
-	<%@project.users.each do |user|%>
-		<li> <a href="/users/<%=user.slug%>" ><%=user.first_name%> <%=user.last_name%></a>
-	<%end%>
-	</ul>
-</div>
-
-<hr style="border-top: solid 2px;" />
-
-<h3>All Daily Reports: </h3>
-
-<%sorted_reports_by_date = @project.daily_reports.sort_by{|k| k[:work_date]} %>
-
-<%sorted_reports_by_date.each do |report|%>
-	<div class="report-summary-item">
+	<div class="item-group">
 		<div class="row">
 			<div class="col-20">
-				<b>Date:</b> 
+				<b>Site Address:</b>
 			</div>
-			<div class="col-80">
-				<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b> </a>
-			</div>
-		</div>
-		
-		<div class="row">
-			<div class="col-20">
-				<b>Submitted by:</b> 
-			</div>
-			<div class="col-80">
-				<%=report.user.first_name%> <%=report.user.last_name%>
+			<div class="col-30">
+				<%=@project.address%>
 			</div>
 		</div>
+
 		<div class="row">
 			<div class="col-20">
-				<b>Work Completed:</b>
+				<b>Start Date:</b>
+			</div>
+			<div class="col-30">
+				<%=@project.start_date%>
+			</div>
+			<div class="col-20">
+				<b>Finish Date:</b>
+			</div>
+			<div class="col-30">
+				<%=@project.finish_date%>
 			</div> 
+		</div>
+
+		<div class="row" id="min-height-60">
+			<div class="col-20">
+				<b>Project Description:</b>
+			</div>
 			<div class="col-80">
-				<%=report.work_completed%>
+				<%=@project.description%>
 			</div>
 		</div>
-		<hr>
+
+	<hr style="border-top: solid 2px;" />
+
+	<h3>Users on Project</h3>
+	<div class="container">
+		<ul>
+		<%@project.users.each do |user|%>
+			<li> <a href="/users/<%=user.slug%>" ><%=user.first_name%> <%=user.last_name%></a>
+		<%end%>
+		</ul>
 	</div>
-	<br>
-<%end%>
 
-<form method="GET" action="/projects/<%=@project.slug%>/edit">
-    <input class="button" type="submit" value="Edit Project" id="Edit Project" >
-</form>
+	<hr style="border-top: solid 2px;" />
 
+	<h3>All Daily Reports: </h3>
+
+	<%sorted_reports_by_date = @project.daily_reports.sort_by{|k| k[:work_date]} %>
+
+	<%sorted_reports_by_date.each do |report|%>
+		<div class="report-summary-item">
+			<div class="row">
+				<div class="col-20">
+					<b>Date:</b> 
+				</div>
+				<div class="col-80">
+					<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b> </a>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-20">
+					<b>Submitted by:</b> 
+				</div>
+				<div class="col-80">
+					<%=report.user.first_name%> <%=report.user.last_name%>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-20">
+					<b>Work Completed:</b>
+				</div> 
+				<div class="col-80">
+					<%=report.work_completed%>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<br>
+	<%end%>
+
+	<form method="GET" action="/projects/<%=@project.slug%>/edit">
+		<input class="button" type="submit" value="Edit Project" id="Edit Project" >
+	</form>
+</body>

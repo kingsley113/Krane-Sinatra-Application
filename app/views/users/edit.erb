@@ -1,88 +1,94 @@
-<h2>Edit User: <%=@user.first_name%> <%=@user.last_name%></h2>
+<head>
+    <title>Edit User: <%=@user.username%></title>
+</head>
 
-<form class="new-object-form" method="post" action="/users/<%=@user.slug%>" name="edit_user">
-	<input type="hidden" id="hidden" name="_method" value="patch"> 
+<body>
+	<h2>Edit User: <%=@user.first_name%> <%=@user.last_name%></h2>
 
-	<div class="row">
-		<div class="col-20">
-			<label for="first_name">First Name:</label>
-		</div>
-		<div class="col-30">
-			<input type="text" id="first_name" name="new_user[first_name]" value="<%=@user.first_name%>" required>
-		</div>
-		<div class="col-20">
-			<label for="last_name">Last Name:</label>
-		</div>
-		<div class="col-30">
-			<input type="text" id="last_name" name="new_user[last_name]" value="<%=@user.last_name%>" required>
-		</div>
-	</div>
+	<form class="new-object-form" method="post" action="/users/<%=@user.slug%>" name="edit_user">
+		<input type="hidden" id="hidden" name="_method" value="patch"> 
 
-	<div class="row">
-		<div class="col-20">
-			<label for="username">Username:</label>
-		</div>
-		<div class="col-30">
-			<input type="text" id="username" name="new_user[username]" value="<%=@user.username%>" required>
-		</div>
-	</div>
-
-	<div class="row">
-		<div class="col-20">
-			<label for="email">Email:</label>
-		</div>
-		<div class="col-30">
-			<input type="email" id="email" name="new_user[email]" value="<%=@user.email%>" required>
-		</div>
-		<div class="col-20">
-			<label for="position">Position:</label>
-		</div>
-		<div class="col-30">
-			<input type="text" id="position" name="new_user[position]" value="<%=@user.position%>" required>
-		</div>
-	</div>
-
-	<hr>
-	
-	<h3>Assign User to Current Projects:</h3>
-
-	<% @projects.each do |project|%>
 		<div class="row">
 			<div class="col-20">
-				<label for="<%=project.id%>"><%=project.name%></label>
+				<label for="first_name">First Name:</label>
 			</div>
-			<div class="col-80">
-				<input type="checkbox" id="<%=project.id%>" name="edited_user[project_ids][]" value="<%=project.id%>" <%='checked' if @user.projects.include?(project)%> >
+			<div class="col-30">
+				<input type="text" id="first_name" name="new_user[first_name]" value="<%=@user.first_name%>" required>
+			</div>
+			<div class="col-20">
+				<label for="last_name">Last Name:</label>
+			</div>
+			<div class="col-30">
+				<input type="text" id="last_name" name="new_user[last_name]" value="<%=@user.last_name%>" required>
 			</div>
 		</div>
-	<%end%>    
-	<hr>
-	<br>
 
-	<div class="row">
-		<div class="col-20">
-			<label for="old_password">Old Password:</label>
+		<div class="row">
+			<div class="col-20">
+				<label for="username">Username:</label>
+			</div>
+			<div class="col-30">
+				<input type="text" id="username" name="new_user[username]" value="<%=@user.username%>" required>
+			</div>
 		</div>
-		<div class="col-30">
-			<input type="password" id="old_password" name="edited_user[old_password]" required>
-		</div>
-		<div class="col-20">
-			<label for="new_password">New Password:</label>
-		</div>
-		<div class="col-30">
-			<input type="password" id="new_password" name="edited_user[password]" required>
-		</div>
-	</div>
 
-	<br>
-
-	<input class="button" type="submit" name="submit" id="submit" value="Update User">
-	
-	<%if session.include?(:message)%>
-		<div class="container error-text">
-			<%= session[:message]%>
-			<% session.delete(:message) %>
-			<br>
+		<div class="row">
+			<div class="col-20">
+				<label for="email">Email:</label>
+			</div>
+			<div class="col-30">
+				<input type="email" id="email" name="new_user[email]" value="<%=@user.email%>" required>
+			</div>
+			<div class="col-20">
+				<label for="position">Position:</label>
+			</div>
+			<div class="col-30">
+				<input type="text" id="position" name="new_user[position]" value="<%=@user.position%>" required>
+			</div>
 		</div>
-	<% end %>
-</form>
+
+		<hr>
+		
+		<h3>Assign User to Current Projects:</h3>
+
+		<% @projects.each do |project|%>
+			<div class="row">
+				<div class="col-20">
+					<label for="<%=project.id%>"><%=project.name%></label>
+				</div>
+				<div class="col-80">
+					<input type="checkbox" id="<%=project.id%>" name="edited_user[project_ids][]" value="<%=project.id%>" <%='checked' if @user.projects.include?(project)%> >
+				</div>
+			</div>
+		<%end%>    
+		<hr>
+		<br>
+
+		<div class="row">
+			<div class="col-20">
+				<label for="old_password">Old Password:</label>
+			</div>
+			<div class="col-30">
+				<input type="password" id="old_password" name="edited_user[old_password]" required>
+			</div>
+			<div class="col-20">
+				<label for="new_password">New Password:</label>
+			</div>
+			<div class="col-30">
+				<input type="password" id="new_password" name="edited_user[password]" required>
+			</div>
+		</div>
+
+		<br>
+
+		<input class="button" type="submit" name="submit" id="submit" value="Update User">
+		
+		<%if session.include?(:message)%>
+			<div class="container error-text">
+				<%= session[:message]%>
+				<% session.delete(:message) %>
+				<br>
+			</div>
+		<% end %>
+	</form>
+</body>

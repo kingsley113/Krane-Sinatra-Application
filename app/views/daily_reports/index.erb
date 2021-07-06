@@ -1,56 +1,62 @@
-<h1> All Daily Reports: </h1>
+<head>
+    <title>All Daily Reports</title>
+</head>
 
-<%@projects.each do |project| %>
-	<div class="item-group">	
-		<h2><%=project.name%> </h2>
-		
-		<%project_reports = [] %>
-		<% @daily_reports.each do |report| %>
-			<%if report.project_id == project.id%>
-				<% project_reports << report %>
-			<%end%>	
-		<%end%>
-	
-		<%sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
+<body>
+	<h1> All Daily Reports: </h1>
 
-		<%sorted_reports_by_date.each do |report| %>
-			<div class="report-summary-item">
-				<div class="row">
-					<div class="col-20">
-						<b>Date:</b> 
-					</div>
-					<div class="col-80">
-						<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b> </a>
-					</div>
-				</div>
-				
-				<div class="row">
-					<div class="col-20">
-						<b>Submitted by:</b> 
-					</div>
-					<div class="col-80">
-						<%=report.user.first_name%> <%=report.user.last_name%>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-20">
-						<b>Work Completed:</b>
-					</div> 
-					<div class="col-80">
-						<%=report.work_completed%>
-					</div>
-				</div>
+	<%@projects.each do |project| %>
+		<div class="item-group">	
+			<h2><%=project.name%> </h2>
 			
-				<%if report != sorted_reports_by_date.last %>
-				<hr style="border-top: dotted 1px;" />
+			<%project_reports = [] %>
+			<% @daily_reports.each do |report| %>
+				<%if report.project_id == project.id%>
+					<% project_reports << report %>
 				<%end%>	
-			</div>
-		<% end %>
-			
-		<hr style="border-top: solid 2px;" />
-	</div>
-<% end %>
+			<%end%>
+		
+			<%sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
 
-<form method="GET" action="/daily_reports/new" >
-    <input class="button" type="submit" value="CREATE NEW REPORT" id="New Report" >
-</form>
+			<%sorted_reports_by_date.each do |report| %>
+				<div class="report-summary-item">
+					<div class="row">
+						<div class="col-20">
+							<b>Date:</b> 
+						</div>
+						<div class="col-80">
+							<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b> </a>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-20">
+							<b>Submitted by:</b> 
+						</div>
+						<div class="col-80">
+							<%=report.user.first_name%> <%=report.user.last_name%>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-20">
+							<b>Work Completed:</b>
+						</div> 
+						<div class="col-80">
+							<%=report.work_completed%>
+						</div>
+					</div>
+				
+					<%if report != sorted_reports_by_date.last %>
+					<hr style="border-top: dotted 1px;" />
+					<%end%>	
+				</div>
+			<% end %>
+				
+			<hr style="border-top: solid 2px;" />
+		</div>
+	<% end %>
+
+	<form method="GET" action="/daily_reports/new" >
+		<input class="button" type="submit" value="CREATE NEW REPORT" id="New Report" >
+	</form>
+</body>

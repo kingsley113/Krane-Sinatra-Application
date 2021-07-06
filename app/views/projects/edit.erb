@@ -1,66 +1,72 @@
-<h2>Edit Project:</h2>
+<head>
+    <title>Edit Project: <%=@project.name%></title>
+</head>
 
-<form class="new-object-form" method="post" action="/projects/<%=@project.slug%>" name="edit_project">
-<input type="hidden" id="hidden" name="_method" value="patch"> 
-    
-    
-	<div class="row">
-		<div class="col-20">
-			<label for="project_name">Project Name:</label>
-		</div>
-		<div class="col-30">
-			<input type="text" id="project_name" name="edit_project[name]" value="<%=@project.name%>" required>
-		</div>
-		<div class="col-20">
-			<label for="address">Site Address:</label>
-		</div>
-		<div class="col-30">
-			<input type="text" id="address" name="edit_project[address]" value="<%=@project.address%>" required>
-		</div> 
-	</div>
-    
-    <div class="row">
-		<div class="col-20">
-			<label for="start_date">Start Date:</label>
-		</div>
-		<div class="col-30">
-			<input type="date" id="start_date" name="edit_project[start_date]" value="<%=@project.start_date%>" required>
-		</div>
-		<div class="col-20">
-			<label for="finish_date">Finish Date:</label>
-		</div>
-		<div class="col-30">
-			<input type="date" id="finish_date" name="edit_project[finish_date]" value="<%=@project.finish_date%>" required>
-		</div> 
-	</div>
+<body>
+	<h2>Edit Project:</h2>
 
-    <div class="row">
-		<div class="col-20">
-			<label for="description">Project Description:</label>
+	<form class="new-object-form" method="post" action="/projects/<%=@project.slug%>" name="edit_project">
+	<input type="hidden" id="hidden" name="_method" value="patch"> 
+		
+		
+		<div class="row">
+			<div class="col-20">
+				<label for="project_name">Project Name:</label>
+			</div>
+			<div class="col-30">
+				<input type="text" id="project_name" name="edit_project[name]" value="<%=@project.name%>" required>
+			</div>
+			<div class="col-20">
+				<label for="address">Site Address:</label>
+			</div>
+			<div class="col-30">
+				<input type="text" id="address" name="edit_project[address]" value="<%=@project.address%>" required>
+			</div> 
 		</div>
-		<div class="col-80">
-			<input type="text" id="description" name="edit_project[description]" value="<%=@project.description%>" required>
+		
+		<div class="row">
+			<div class="col-20">
+				<label for="start_date">Start Date:</label>
+			</div>
+			<div class="col-30">
+				<input type="date" id="start_date" name="edit_project[start_date]" value="<%=@project.start_date%>" required>
+			</div>
+			<div class="col-20">
+				<label for="finish_date">Finish Date:</label>
+			</div>
+			<div class="col-30">
+				<input type="date" id="finish_date" name="edit_project[finish_date]" value="<%=@project.finish_date%>" required>
+			</div> 
 		</div>
-	</div>
 
-    <hr>
-    
-    <h3>Users Assigned to Project:</h3>
-    
-    <div class="container">
-			<% @users.each do |user|%>
-				<div class="row">
-					<div class="col-20">
-						<label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
+		<div class="row">
+			<div class="col-20">
+				<label for="description">Project Description:</label>
+			</div>
+			<div class="col-80">
+				<input type="text" id="description" name="edit_project[description]" value="<%=@project.description%>" required>
+			</div>
+		</div>
+
+		<hr>
+		
+		<h3>Users Assigned to Project:</h3>
+		
+		<div class="container">
+				<% @users.each do |user|%>
+					<div class="row">
+						<div class="col-20">
+							<label for="<%=user.id%>"><%=user.first_name%> <%=user.last_name%></label><br>
+						</div>
+						<div class="col-80">
+							<input type="checkbox" id="<%=user.id%>" name="edit_project[user_ids][]" value="<%=user.id%>" <%='checked' if @project.users.include?(user)%> >
+						</div>
 					</div>
-					<div class="col-80">
-						<input type="checkbox" id="<%=user.id%>" name="edit_project[user_ids][]" value="<%=user.id%>" <%='checked' if @project.users.include?(user)%> >
-					</div>
-				</div>
-			<%end%>
-    </div>
+				<%end%>
+		</div>
 
-    <hr>
+		<hr>
 
-    <input class="button" type="submit" name="submit" id="submit" value="Save Project">
-</form>
+		<input class="button" type="submit" name="submit" id="submit" value="Save Project">
+	</form>
+</body>

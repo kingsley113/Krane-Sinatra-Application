@@ -1,94 +1,95 @@
-<%if session.include?(:message)%>
-	<%= session[:message]%>
-	<% session.delete(:message) %>
-	<br>
-<% end %>
+<head>
+    <title>User Details: <%=@user.username%></title>
+</head>
 
-<div class="page-header">
-	<h1><%=@user.first_name%> <%=@user.last_name%></h1>
-	<b>Position: <%=@user.position%> <br> </b>
-	<b>Email: <%=@user.email%> <br> </b>
-	<br>
+<body>	
+	<%if session.include?(:message)%>
+		<%= session[:message]%>
+		<% session.delete(:message) %>
+		<br>
+	<% end %>
 
-	<h2>All Reports by Project:</h2>
-</div>
+	<div class="page-header">
+		<h1><%=@user.first_name%> <%=@user.last_name%></h1>
+		<b>Position: <%=@user.position%> <br> </b>
+		<b>Email: <%=@user.email%> <br> </b>
+		<br>
 
-<%@user.projects.each do |project| %>
-	<div class="item-group">
-		<h3><a href="/projects/<%=project.slug%>" ><%=project.name%></a> </h3>
+		<h2>All Reports by Project:</h2>
+	</div>
 
-		<%project_reports = [] %>
-		<% @user.daily_reports.each do |report| %>
-			<%if report.project_id == project.id%>
-				<% project_reports << report %>
-			<%end%>	
-		<%end%>
+	<%@user.projects.each do |project| %>
+		<div class="item-group">
+			<h3><a href="/projects/<%=project.slug%>" ><%=project.name%></a> </h3>
 
-		<%if project_reports != [] %>
-			<%@sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
+			<%project_reports = [] %>
+			<% @user.daily_reports.each do |report| %>
+				<%if report.project_id == project.id%>
+					<% project_reports << report %>
+				<%end%>	
+			<%end%>
 
-			<%@sorted_reports_by_date.each do |report| %>
-				<div class="report-summary-item">
-					<div class="row">
-						<div class="col-15">
-							Date:
+			<%if project_reports != [] %>
+				<%@sorted_reports_by_date = project_reports.sort_by{|k| k[:work_date]} %>
+
+				<%@sorted_reports_by_date.each do |report| %>
+					<div class="report-summary-item">
+						<div class="row">
+							<div class="col-15">
+								Date:
+							</div>
+							<div class="col-80">
+								<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b></a> 
+							</div>
 						</div>
-						<div class="col-80">
-							<a href="/daily_reports/<%=report.id%>" ><b><%=report.work_date%></b></a> 
+
+						<div class="row">
+							<div class="col-15">
+								Weather:
+							</div>
+							<div class="col-80">
+								<%=report.weather%> 
+							</div>
 						</div>
+										
+						<div class="row">
+							<div class="col-15">
+								Work Completed:
+							</div>
+							<div class="col-80">
+								<%=report.work_completed%>
+							</div>
+						</div>   
 					</div>
 
-					<div class="row">
-						<div class="col-15">
-							Weather:
-						</div>
-						<div class="col-80">
-							<%=report.weather%> 
-						</div>
-					</div>
-									
-					<div class="row">
-						<div class="col-15">
-							Work Completed:
-						</div>
-						<div class="col-80">
-							<%=report.work_completed%>
-						</div>
-					</div>   
-				</div>
+					<%if report != @sorted_reports_by_date.last %>
+						<hr style="border-top: dotted 1px;" />
+					<%end%>
 
-				<%if report != @sorted_reports_by_date.last %>
-					<hr style="border-top: dotted 1px;" />
-				<%end%>
-
+				<% end %>
+			<% else %>
+				<%= "**No reports submitted**" %>
 			<% end %>
-		<% else %>
-			<%= "**No reports submitted**" %>
-		<% end %>
-				
-		<hr style="border-top: solid 2px;" />
+					
+			<hr style="border-top: solid 2px;" />
+		</div>
+	<% end %>  
+		
+	<div id="container">
+		<br>
+		<form method="GET" action="/users/<%=@user.slug%>/edit" >
+			<input class="button" type="submit" value="EDIT USER DETAILS" id="Edit User" <%= 'disabled' if @user != current_user %> >
+		</form>
+
+		<form method="POST" action="/users/<%=@user.slug%>">
+			<input type="hidden" id="hidden" name="_method" value="DELETE">
+			<input class="button" type="submit" value="DELETE USER" id="Delete USer" <%= 'disabled' if @user != current_user %> >
+		</form>
+
+		<br>
+		
+		<div class="error-text">
+			<%= 'Cannot edit other users details.' if @user != current_user %> 
+		</div>
 	</div>
-<% end %>  
-    
-
-
-
-
-<div id="container">
-	<br>
-	<form method="GET" action="/users/<%=@user.slug%>/edit" >
-		<input class="button" type="submit" value="EDIT USER DETAILS" id="Edit User" <%= 'disabled' if @user != current_user %> >
-	</form>
-
-	<form method="POST" action="/users/<%=@user.slug%>">
-		<input type="hidden" id="hidden" name="_method" value="DELETE">
-		<input class="button" type="submit" value="DELETE USER" id="Delete USer" <%= 'disabled' if @user != current_user %> >
-	</form>
-
-	<br>
-	
-	<div class="error-text">
-		<%= 'Cannot edit other users details.' if @user != current_user %> 
-	</div>
-</div>
-
+</body>

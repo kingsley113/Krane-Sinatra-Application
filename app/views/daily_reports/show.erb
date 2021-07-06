@@ -1,109 +1,114 @@
-<div class="page-header">
-	<%if session.include?(:message)%>
-			<%= session[:message]%>
-			<% session.delete(:message) %>
-			<br>
-	<% end %>
+<head>
+    <title><%=@daily_report.project.name%>: <%=@daily_report.work_date%></title>
+</head>
 
-	<h1>Daily Report for <%=@daily_report.project.name%></h1>
-</div>
+<body>
+	<div class="page-header">
+		<%if session.include?(:message)%>
+				<%= session[:message]%>
+				<% session.delete(:message) %>
+				<br>
+		<% end %>
 
-<div class="item-group">
-
-	<div class="row">
-		<div class="col-15">
-			<b>Work Date:</b>
-		</div>
-		<div class="col-30">
-			<%=@daily_report.work_date%>
-		</div>
-		<div class="col-15">
-			<b>Submitted by:</b>
-		</div>
-		<div class="col-30">
-			<%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%>
-		</div> 
-		 
+		<h1>Daily Report for <%=@daily_report.project.name%></h1>
 	</div>
 
-	<div class="row">
-		<div class="col-15">
-			<b>Start Time:</b>
+	<div class="item-group">
+
+		<div class="row">
+			<div class="col-15">
+				<b>Work Date:</b>
+			</div>
+			<div class="col-30">
+				<%=@daily_report.work_date%>
+			</div>
+			<div class="col-15">
+				<b>Submitted by:</b>
+			</div>
+			<div class="col-30">
+				<%=@daily_report.user.first_name%> <%=@daily_report.user.last_name%>
+			</div> 
+			
 		</div>
-		<div class="col-30">
-			<%=@daily_report.shift_start_time.strftime('%I:%M %p')%>
-		</div> 
-		<div class="col-15">
-			<b>End Time:</b>
+
+		<div class="row">
+			<div class="col-15">
+				<b>Start Time:</b>
+			</div>
+			<div class="col-30">
+				<%=@daily_report.shift_start_time.strftime('%I:%M %p')%>
+			</div> 
+			<div class="col-15">
+				<b>End Time:</b>
+			</div>
+			<div class="col-30">
+				<%=@daily_report.shift_end_time.strftime('%I:%M %p')%>
+			</div> 
 		</div>
-		<div class="col-30">
-			<%=@daily_report.shift_end_time.strftime('%I:%M %p')%>
-		</div> 
+
+		<div class="row">
+			<div class="col-15">
+				<b>Workers On Site:</b>
+			</div>
+			<div class="col-30">
+				<%=@daily_report.no_of_workers_onsite%>
+			</div> 
+			<div class="col-15">
+				<b>Weather:</b>
+			</div>
+			<div class="col-30">
+				<%=@daily_report.weather%>
+			</div> 
+		</div>
+		
+		<hr>
+		
+		<div class="row" id="min-height-100">
+			<div class="col-15">
+				<b>Work Completed: </b>
+			</div>
+			<div class="col-80">
+				<%=@daily_report.work_completed%>
+			</div> 
+		</div>
+
+		<hr>
+
+		<div class="row" id="min-height-60">
+			<div class="col-15">
+				<b>Deliveries: </b>
+			</div>
+			<div class="col-80">
+				<%=@daily_report.deliveries%>
+			</div> 
+		</div>
+		
+		<hr>
+		
+		<div class="row" id="min-height-60">
+			<div class="col-15">
+				<b>Inspections: </b>
+			</div>
+			<div class="col-80">
+				<%=@daily_report.inspections%>
+			</div> 
+		</div>
+
+		<hr>
 	</div>
 
-	<div class="row">
-		<div class="col-15">
-			<b>Workers On Site:</b>
-		</div>
-		<div class="col-30">
-			<%=@daily_report.no_of_workers_onsite%>
-		</div> 
-		<div class="col-15">
-			<b>Weather:</b>
-		</div>
-		<div class="col-30">
-			<%=@daily_report.weather%>
-		</div> 
+
+	<div class="container"> 
+		<form method="GET" action="/daily_reports/<%=@daily_report.id%>/edit">
+			<input class="button" type="submit" value="Edit Report" id="Edit Report" <%= 'disabled' if @daily_report.user != current_user %> >
+		</form>
+
+		<form method="POST" action="/daily_reports/<%=@daily_report.id%>">
+				<input type="hidden" id="hidden" name="_method" value="DELETE">
+				<input class="button" type="submit" value="Delete Report" id="Delete Report" <%= 'disabled' if @daily_report.user != current_user %> >
+		</form>
 	</div>
-	
-	<hr>
-	
-	<div class="row" id="min-height-100">
-		<div class="col-15">
-			<b>Work Completed: </b>
-		</div>
-		<div class="col-80">
-			<%=@daily_report.work_completed%>
-		</div> 
+	<div class="error-text">
+		<%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %>	
 	</div>
-
- 	<hr>
-
-	<div class="row" id="min-height-60">
-		<div class="col-15">
-			<b>Deliveries: </b>
-		</div>
-		<div class="col-80">
-			<%=@daily_report.deliveries%>
-		</div> 
-	</div>
-	
-	<hr>
-	
-	<div class="row" id="min-height-60">
-		<div class="col-15">
-			<b>Inspections: </b>
-		</div>
-		<div class="col-80">
-			<%=@daily_report.inspections%>
-		</div> 
-	</div>
-
-	<hr>
-</div>
-
-
-<div class="container"> 
-	<form method="GET" action="/daily_reports/<%=@daily_report.id%>/edit">
-		<input class="button" type="submit" value="Edit Report" id="Edit Report" <%= 'disabled' if @daily_report.user != current_user %> >
-	</form>
-
-	<form method="POST" action="/daily_reports/<%=@daily_report.id%>">
-			<input type="hidden" id="hidden" name="_method" value="DELETE">
-			<input class="button" type="submit" value="Delete Report" id="Delete Report" <%= 'disabled' if @daily_report.user != current_user %> >
-	</form>
-</div>
-<div class="error-text">
-	<%= 'Only the original author can edit or delete this report.' if @daily_report.user != current_user %>	
-</div>
-
+</body>

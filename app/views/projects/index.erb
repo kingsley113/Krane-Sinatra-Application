@@ -1,50 +1,55 @@
-<h1>All Projects: </h1>
+<head>
+    <title>All Projects</title>
+</head>
 
-<div class="item-group">
-	<%@projects.each do |project|%>
-		<a href="/projects/<%=project.slug%>" ><h3><%=project.name%> </h3></a>
+<body>
+	<h1>All Projects: </h1>
 
-		<div class="row">
-			<div class="col-15">
-				<b>Site Address:</b>
-			</div>
-			<div class="col-80">
-				<%=project.address%> 
-			</div>
-		</div>   
+	<div class="item-group">
+		<%@projects.each do |project|%>
+			<a href="/projects/<%=project.slug%>" ><h3><%=project.name%> </h3></a>
 
-		<div class="row">
-			<div class="col-15">
-				<b>Start Date:</b>
-			</div>
-			<div class="col-35">
-				<%=project.start_date%> 
-			</div>
-						
-			<div class="col-15">
-				<b>Finish Date:</b>
-			</div>
-			<div class="col-35">
-				<%=project.finish_date%> 
-			</div>
-		</div> 
+			<div class="row">
+				<div class="col-15">
+					<b>Site Address:</b>
+				</div>
+				<div class="col-80">
+					<%=project.address%> 
+				</div>
+			</div>   
 
-		<div class="row">
-			<div class="col-15">
-				<b>Description:</b>
-			</div>
-			<div class="col-80">
-				<%=project.description%> 
-			</div>
-		</div>  
+			<div class="row">
+				<div class="col-15">
+					<b>Start Date:</b>
+				</div>
+				<div class="col-35">
+					<%=project.start_date%> 
+				</div>
+							
+				<div class="col-15">
+					<b>Finish Date:</b>
+				</div>
+				<div class="col-35">
+					<%=project.finish_date%> 
+				</div>
+			</div> 
 
-		<hr style="border-top: dotted 1px;" />
+			<div class="row">
+				<div class="col-15">
+					<b>Description:</b>
+				</div>
+				<div class="col-80">
+					<%=project.description%> 
+				</div>
+			</div>  
 
-	<%end%>
-	<br>
-</div>
+			<hr style="border-top: dotted 1px;" />
 
-<form method="GET" action="/projects/new" >
-	<input class="button" type="submit" value="CREATE NEW PROJECT" id="New Project" >
-</form>
-	
+		<%end%>
+		<br>
+	</div>
+
+	<form method="GET" action="/projects/new" >
+		<input class="button" type="submit" value="CREATE NEW PROJECT" id="New Project" >
+	</form>
+</body>

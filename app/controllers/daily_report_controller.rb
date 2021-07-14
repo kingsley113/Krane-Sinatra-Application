@@ -50,6 +50,9 @@ class DailyReportsController < ApplicationController
 
 		if @daily_report.user = current_user
 			erb :'daily_reports/edit'
+		else
+			session[:message] = 'Only the original author can edit or delete this report.'
+			redirect "/daily_reports/#{@daily_report.id}"
 		end
 	end
 

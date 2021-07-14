@@ -48,7 +48,7 @@ class DailyReportsController < ApplicationController
 		@projects = Project.all
 		@user = current_user
 
-		if @daily_report.user = current_user
+		if @daily_report.user == current_user
 			erb :'daily_reports/edit'
 		else
 			session[:message] = 'Only the original author can edit or delete this report.'

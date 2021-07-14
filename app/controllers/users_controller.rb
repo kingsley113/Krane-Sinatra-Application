@@ -50,7 +50,12 @@ class UsersController < ApplicationController
     @user = User.find_by(slug: params[:slug])
     @projects = Project.all
 
-    erb :'users/edit'
+		if @user == current_user
+			erb :'users/edit'
+		else
+			session[:message] = 'User can only edit thier own details.'
+			redirect "/users/#{@user.slug}"
+		end
   end
 
   patch '/users/:slug' do

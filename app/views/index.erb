@@ -4,6 +4,11 @@
 <body>
 
   <div class="home-page">
+	<%if session.include?(:message)%>
+		<%= session[:message]%>
+		<% session.delete(:message) %>
+		<br>
+	<% end %>
 
     <h1 class="super-header">Welcome to Krane!</h1>
     <h2>Daily construction reports made easy!</h2>

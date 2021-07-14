@@ -24,6 +24,13 @@ class ApplicationController < Sinatra::Base
       end
     end
 
+		def redirect_if_not_admin
+			if !current_user.admin
+				session[:message] = 'You need to be an admin to do that'
+				redirect "/"
+			end
+		end
+
     def logged_in?
       !!session[:user_id]
     end

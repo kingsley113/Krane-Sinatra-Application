@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_02_045412) do
+ActiveRecord::Schema.define(version: 2021_07_14_202505) do
 
   create_table "daily_reports", force: :cascade do |t|
     t.string "work_completed"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 2021_07_02_045412) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "first_name"
     t.string "last_name"
+    t.boolean "admin", default: false
   end
 
 end

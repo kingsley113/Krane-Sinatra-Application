@@ -15,8 +15,10 @@ class ProjectsController < ApplicationController
 	# Create new Project
 	get '/projects/new' do
 		redirect_if_not_logged_in
+		redirect_if_not_admin
 		@users = User.all
 		
+
 		erb :'projects/new'
 	end
 

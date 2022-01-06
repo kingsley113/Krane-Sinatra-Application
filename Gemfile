@@ -10,6 +10,8 @@ gem 'bcrypt'
 gem 'rack-flash3'
 gem 'sinatra-redirect-with-flash'
 
+gem 'pg'
+
 group :development do
   gem 'shotgun'
   gem 'pry'

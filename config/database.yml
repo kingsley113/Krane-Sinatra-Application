@@ -1,10 +1,28 @@
+# default: &default
+#   adapter: 'sqlite3'
+#   database: 'db/development.sqlite'
+
+# development:
+#   <<: *default
+
+# test:
+#   <<: *default
+#   database: 'db/test.sqlite'
+
 default: &default
-  adapter: 'sqlite3'
-  database: 'db/development.sqlite'
+  adapter: postgresql
+  encoding: unicode
 
 development:
   <<: *default
+  database: krane_development
 
 test:
   <<: *default
-  database: 'db/test.sqlite'
+  database: krane_test
+
+production:
+  <<: *default
+  database: krane_production
+  username: kranedatabase
+  password: <%= ENV['KRANE_DATABASE_PASSWORD'] %>

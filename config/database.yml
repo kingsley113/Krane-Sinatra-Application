@@ -23,9 +23,9 @@ development:
   username: ckingsley
   password: supersecuredatabasepassword
 
-# test:
-#   <<: *default
-#   database: krane_test
+test:
+  <<: *default
+  database: krane_test
 
 production:
   # <<: *default

@@ -1,7 +1,9 @@
 source 'http://rubygems.org'
 
 # use ruby 3.0.3 for heroku
-ruby '3.0.3'
+# ruby '3.0.3'
+# use ruby 2.7.5 for heroku with shotgun
+# ruby '2.7.5'
 
 gem 'sinatra'
 gem 'activerecord', '~> 6.0.0', :require => 'active_record'

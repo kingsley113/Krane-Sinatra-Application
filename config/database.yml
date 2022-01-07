@@ -28,17 +28,17 @@ test:
   database: krane_test
 
 production:
-<<: *default
-#  adapter: postgresql
-# encoding: unicode
-# pool: 5
-# host: <%= ENV['DATABASE_HOST'] %>
-# database: krane_production
-# username: krane
-# password: <%= ENV['KRANE_DATABASE_PASSWORD'] %>
-# password: supersecretpassword
+  <<: *default
+  #  adapter: postgresql
+  # encoding: unicode
+  # pool: 5
+  # host: <%= ENV['DATABASE_HOST'] %>
+  # database: krane_production
+  # username: krane
+  # password: <%= ENV['KRANE_DATABASE_PASSWORD'] %>
+  # password: supersecretpassword
 
-# host: <%= ENV['DATABASE_HOST'] %>
-# database: <%= ENV['DATABASE_NAME'] %>
-# username: <%= ENV['DATABASE_USER'] %>
-# password: <%= ENV['DATABASE_PASSWORD'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE_NAME'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>

@@ -354,4 +354,5 @@ ul {
 .flex-vert {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }

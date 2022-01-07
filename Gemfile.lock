@@ -76,6 +76,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   activerecord (~> 6.0.0)
@@ -96,3 +97,5 @@ DEPENDENCIES
 RUBY VERSION
    ruby 3.0.3p157
 
+BUNDLED WITH
+   2.2.32

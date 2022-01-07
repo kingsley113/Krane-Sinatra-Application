@@ -1,5 +1,8 @@
 source 'http://rubygems.org'
 
+# use ruby 3.0.3 for heroku
+ruby '3.0.3'
+
 gem 'sinatra'
 gem 'activerecord', '~> 6.0.0', :require => 'active_record'
 gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
@@ -10,6 +13,7 @@ gem 'bcrypt'
 gem 'rack-flash3'
 gem 'sinatra-redirect-with-flash'
 
+# PostgreSQL for Heroku
 gem 'pg'
 
 group :development do

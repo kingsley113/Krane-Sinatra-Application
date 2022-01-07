@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   # Create new user
   get '/users/signup' do
-    # @projects = Project.all
-		@projects = nil
+    @projects = Project.all
+		print(@projects)
 
     if logged_in?
       redirect "/users/#{current_user.slug}"

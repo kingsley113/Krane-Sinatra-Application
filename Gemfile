@@ -15,6 +15,7 @@ gem 'bcrypt'
 gem 'rack-flash3'
 gem 'sinatra-redirect-with-flash'
 
+# gem 'sqlite3'
 # PostgreSQL for Heroku
 gem 'pg'
 
@@ -22,5 +23,5 @@ group :development do
   gem 'shotgun'
   gem 'pry'
   gem 'tux'
-  # gem 'sqlite3'
+  gem 'sqlite3'
 end

@@ -26,8 +26,9 @@ development:
 test:
   <<: *default
   database: krane_test
-# production:
-# <<: *default
+
+production:
+<<: *default
 #  adapter: postgresql
 # encoding: unicode
 # pool: 5

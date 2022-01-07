@@ -1,13 +1,13 @@
 # default: &default
-#   adapter: 'sqlite3'
-#   database: 'db/development.sqlite'
+#   adapter: "sqlite3"
+#   database: "db/development.sqlite"
 
 # development:
 #   <<: *default
 
 # test:
 #   <<: *default
-#   database: 'db/test.sqlite'
+#   database: "db/test.sqlite"
 
 default: &default
   adapter: postgresql
@@ -15,24 +15,25 @@ default: &default
   pool: 5
 
 development:
-  # <<: *default
-  adapter: postgresql
-  encoding: unicode
+  <<: *default
+  # adapter: postgresql
+  # encoding: unicode
   database: krane_development
-  pool: 2
-  username: ckingsley
-  password: supersecuredatabasepassword
+  # pool: 2
+  # username: ckingsley
+  # password: supersecuredatabasepassword
 
 test:
   <<: *default
   database: krane_test
 
 production:
-  # <<: *default
-   adapter: postgresql
-  encoding: unicode
-  pool: 5
-  host: <%= ENV['DATABASE_HOST'] %>
-  database: <%= ENV['DATABASE_NAME'] %>
-  username: <%= ENV['DATABASE_USER'] %>
-  password: <%= ENV['DATABASE_PASSWORD'] %>
+  <<: *default
+  #  adapter: postgresql
+  # encoding: unicode
+  # pool: 5
+  # host: <%= ENV['DATABASE_HOST'] %>
+  database: krane_production
+  username: krane
+  password: <%= ENV['KRANE_DATABASE_PASSWORD'] %>
+  # password: supersecretpassword

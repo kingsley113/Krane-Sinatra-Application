@@ -22,4 +22,4 @@ ActiveRecord::Base.establish_connection(
 	:database => "db/#{ENV['SINATRA_ENV']}"
 )
 
-require_all 'app'
+require_all 'app' 

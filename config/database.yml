@@ -15,15 +15,23 @@ default: &default
   pool: 5
 
 development:
-  <<: *default
+  # <<: *default
+  adapter: postgresql
+  encoding: unicode
   database: krane_development
+  pool: 2
+  username: ckingsley
+  password: supersecuredatabasepassword
 
 test:
   <<: *default
   database: krane_test
 
 production:
-  <<: *default
+  # <<: *default
+   adapter: postgresql
+  encoding: unicode
+  pool: 5
   host: <%= ENV['DATABASE_HOST'] %>
   database: <%= ENV['DATABASE_NAME'] %>
   username: <%= ENV['DATABASE_USER'] %>

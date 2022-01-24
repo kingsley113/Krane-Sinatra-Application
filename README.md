@@ -1,6 +1,12 @@
 # Krane-Sinatra-Application
  Krane Daily Report App - Phase 2 Final Project
 
+## Demo Video
+https://www.youtube.com/watch?v=MGPWcYnooe8&ab_channel=CameronKingsley
+
+## Project Link
+https://krane-sinatra.herokuapp.com/
+
 ## Description
  Krane is a simple daily report app aimed at general contractors in the construction industry. The intent is to simplify submitting and saving daily construction progress reports from multiple users across multiple projects. Inspired by my background in the construction industry, this is one area that is often overlooked as it is typically a routine, mundane and time consuming task, but very important to have records of construction progress.
 
